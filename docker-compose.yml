@@ -1,0 +1,61 @@
+services:
+    back:
+        build:
+            context: ./Back
+        ports:
+            - 5001:5001
+            - 5002:5002
+        #environment:
+        #    - ASPNETCORE_URLS=http://+:5001;https://5002
+        volumes:
+            - './Back/:/app/'
+        depends_on:
+            - db
+        external_links:
+            - db:database
+        networks:
+            default:
+
+    front:
+        build:
+            context: ./Front
+        ports:
+            - 80:80
+        environment:
+            - PORT=80
+        volumes:
+            - './Front/:/app/'
+        depends_on:
+            - back
+        networks:
+            default:
+
+    db:
+        image: postgres:14.5
+        environment:
+            POSTGRES_DB: "testdb"
+            POSTGRES_USER: "testuser"
+            POSTGRES_PASSWORD: "testpass"
+            PGDATA: "/var/lib/postgresql/data/pgdata"
+        ports:
+            - 5432:5432
+        networks:
+            default:
+
+    structurizr:
+        image: structurizr/lite
+        ports:
+            - 8001:8080
+        volumes:
+            - './structurizr:/usr/local/structurizr/'
+
+    rabbit:
+        image: rabbitmq:3-management
+        ports:
+            - 5671:5671
+            - 5672:5672
+            - 4369:4369
+            - 15691:15691
+            - 15962:15692
+            - 25672:25672
+            - 15672:15672
