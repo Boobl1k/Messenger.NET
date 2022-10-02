@@ -1,13 +1,11 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import {HubConnectionBuilder} from '@microsoft/signalr';
 import { v4 as uuidv4 } from 'uuid';
-import {ChatWindow} from "./ChatWindow/ChatWindow";
-import {ChatInput} from "./ChatInput/ChatInput";
+import ChatWindow from "./ChatWindow/ChatWindow";
+import ChatInput from "./ChatInput/ChatInput";
 import IMessage from "../entities/IMessage";
-import axios from "axios";
 
-
-export function Chat() {
+export default function Chat() {
     const [chat, setChat] = useState<IMessage[]>([]);
 
     useEffect(() => {
@@ -17,8 +15,8 @@ export function Chat() {
             .build();
 
         connection.start()
-            .then(result => {
-                console.log('Connected!');
+            .then(() => {
+                console.log('Connected to signalR!');
 
                 connection.on('ReceiveMessage', message => {
                     const updatedChat = [...chat];

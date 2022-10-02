@@ -4,7 +4,7 @@ interface ChatInputProps {
     sendMessage: (user: string, message: string) => void;
 }
 
-export function ChatInput({sendMessage}: ChatInputProps) {
+export default function ChatInput({sendMessage}: ChatInputProps) {
     const [user, setUser] = useState('');
     const [message, setMessage] = useState('');
 

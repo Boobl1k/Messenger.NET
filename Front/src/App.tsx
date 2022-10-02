@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {List, Button, ListItem, ListItemText, Box, Divider, TextField} from "@mui/material";
 import IMessage from "./entities/IMessage";
-import {Chat} from "./Chat/Chat";
+import Chat from "./Chat/Chat";
 
 // const BASE_URL = 'https://localhost:5002/';
 // const SEND_MESSAGE = 'SendMessageMt';
