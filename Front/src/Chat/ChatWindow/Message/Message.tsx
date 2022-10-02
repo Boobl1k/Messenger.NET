@@ -8,7 +8,7 @@ interface MessageProps {
 export function Message({message}: MessageProps) {
     return (
         <div style={{background: "#eee", borderRadius: '5px', padding: '0 10px'}}>
-            <p><strong>{message.userName}</strong> says:</p>
+            <p><b>{message.userName}</b> <i>{message.dateTime.toString()}</i>:</p>
             <p>{message.text}</p>
         </div>
     );

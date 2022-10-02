@@ -19,20 +19,22 @@ services.AddDbContext<AppDbContext>();
 services.AddScoped<MessagesRepository>();
 services.AddScoped<MessagesService>();
 
+// SignalR
+services.AddSignalR(opt =>
+{
+    opt.EnableDetailedErrors = true;
+});
+
 services.AddCors(options =>
 {
     options.AddPolicy("ClientPermission", policy =>
     {
         policy.AllowAnyHeader()
             .AllowAnyMethod()
-            // .WithOrigins("http://localhost:3000")
-            .AllowAnyOrigin()
+            .WithOrigins("http://localhost")
             .AllowCredentials();
     });
 });
-
-// SignalR
-builder.Services.AddSignalR();
 
 services.AddMassTransit(config =>
 {
@@ -61,9 +63,6 @@ await using (var scope = app.Services.CreateAsyncScope())
 if (app.Environment.IsDevelopment())
     app.UseSwagger().UseSwaggerUI();
 
-app.UseCors("ClientPermission");
-// app.UseCors(b => b.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
-
 app.Use(async (context, next) =>
 {
     Console.WriteLine(context.Request.Path);
@@ -81,6 +80,9 @@ app
     // .UseHttpsRedirection()
     .UseAuthentication()
     .UseAuthorization();
+
+app.UseCors("ClientPermission");
+
 app.MapControllers();
 
 // SignalR
