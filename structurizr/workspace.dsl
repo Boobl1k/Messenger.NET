@@ -2,15 +2,8 @@ workspace {
     model {
         softwareSystem = softwareSystem "Messenger" {
             database = container "Database" {
-                users = component "Users"
-                messages = component "Messages"
-                dialogues = component "Dialogues" {
-                    this -> messages "messages[]"
-                }
-                users_dialogues = component "users_dialogues" {
-                    this -> users "user"
-                    this -> dialogues "dialogue"
-                }
+            }
+            WEB = container "WEB" {
             }
             API = container "API" {
                 tags "software"
@@ -18,32 +11,28 @@ workspace {
                 dbContext = component "DB context" {
                     this -> database "Uses"
                 }
-                identityService = component "Identity service" {
+                messagesRepository = component "Messages repository" {
                     this -> dbContext "CRUD"
-                }
-                dialoguesService = component "Dialogues service" {
-                    this -> dbContext "CRUD"
-                    this -> identityService "Uses"
-                }
-                messagesService = component "Messages service" {
-                    this -> dbContext "CRUD"
-                    this -> dialoguesService "Uses"
-                    this -> identityService "Uses"
                 }
                 
-                authController = component "Auth controller" {
-                    this -> identityService "Uses"
+                massTransit = component "Mass transit" {
+                    this -> messagesRepository "Uses"
+                }
+                
+                signalR = component "SignalR" {
+                    this -> WEB "Sends"
+                }
+                
+                messagesService = component "Messages service" {
+                    this -> massTransit "Uses"
+                    this -> signalR "Uses"
+                    this -> messagesRepository "Uses"
                 }
                 messagesController = component "Messages controller" {
                     this -> messagesService "Uses"
                 }
-                dialoguesController = component "Dialogues controller" {
-                    this -> dialoguesService "Uses"
-                }
             }
-            WEB = container "WEB" {
-                this -> API "Uses"
-            }
+            WEB -> messagesController "Uses"
         }
     }
     views {
@@ -62,9 +51,6 @@ workspace {
             include *
         }
         component API {
-            include *
-        }
-        component Database {
             include *
         }
         theme default

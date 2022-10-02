@@ -2,9 +2,11 @@
   "id" : 1,
   "name" : "Name",
   "description" : "Description",
-  "lastModifiedDate" : "2022-09-29T13:15:53Z",
+  "revision" : 0,
+  "lastModifiedDate" : "2022-10-02T14:11:31Z",
+  "lastModifiedAgent" : "structurizr-web/2827/diagram",
   "properties" : {
-    "structurizr.dsl" : "d29ya3NwYWNlIHsKICAgIG1vZGVsIHsKICAgICAgICBzb2Z0d2FyZVN5c3RlbSA9IHNvZnR3YXJlU3lzdGVtICJNZXNzZW5nZXIiIHsKICAgICAgICAgICAgZGF0YWJhc2UgPSBjb250YWluZXIgIkRhdGFiYXNlIiB7CiAgICAgICAgICAgICAgICB1c2VycyA9IGNvbXBvbmVudCAiVXNlcnMiCiAgICAgICAgICAgICAgICBtZXNzYWdlcyA9IGNvbXBvbmVudCAiTWVzc2FnZXMiCiAgICAgICAgICAgICAgICBkaWFsb2d1ZXMgPSBjb21wb25lbnQgIkRpYWxvZ3VlcyIgewogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gbWVzc2FnZXMgIm1lc3NhZ2VzW10iCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICB1c2Vyc19kaWFsb2d1ZXMgPSBjb21wb25lbnQgInVzZXJzX2RpYWxvZ3VlcyIgewogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gdXNlcnMgInVzZXIiCiAgICAgICAgICAgICAgICAgICAgdGhpcyAtPiBkaWFsb2d1ZXMgImRpYWxvZ3VlIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CiAgICAgICAgICAgIEFQSSA9IGNvbnRhaW5lciAiQVBJIiB7CiAgICAgICAgICAgICAgICB0YWdzICJzb2Z0d2FyZSIKICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgZGJDb250ZXh0ID0gY29tcG9uZW50ICJEQiBjb250ZXh0IiB7CiAgICAgICAgICAgICAgICAgICAgdGhpcyAtPiBkYXRhYmFzZSAiVXNlcyIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIGlkZW50aXR5U2VydmljZSA9IGNvbXBvbmVudCAiSWRlbnRpdHkgc2VydmljZSIgewogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gZGJDb250ZXh0ICJDUlVEIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgZGlhbG9ndWVzU2VydmljZSA9IGNvbXBvbmVudCAiRGlhbG9ndWVzIHNlcnZpY2UiIHsKICAgICAgICAgICAgICAgICAgICB0aGlzIC0+IGRiQ29udGV4dCAiQ1JVRCIKICAgICAgICAgICAgICAgICAgICB0aGlzIC0+IGlkZW50aXR5U2VydmljZSAiVXNlcyIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIG1lc3NhZ2VzU2VydmljZSA9IGNvbXBvbmVudCAiTWVzc2FnZXMgc2VydmljZSIgewogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gZGJDb250ZXh0ICJDUlVEIgogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gZGlhbG9ndWVzU2VydmljZSAiVXNlcyIKICAgICAgICAgICAgICAgICAgICB0aGlzIC0+IGlkZW50aXR5U2VydmljZSAiVXNlcyIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgYXV0aENvbnRyb2xsZXIgPSBjb21wb25lbnQgIkF1dGggY29udHJvbGxlciIgewogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gaWRlbnRpdHlTZXJ2aWNlICJVc2VzIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgbWVzc2FnZXNDb250cm9sbGVyID0gY29tcG9uZW50ICJNZXNzYWdlcyBjb250cm9sbGVyIiB7CiAgICAgICAgICAgICAgICAgICAgdGhpcyAtPiBtZXNzYWdlc1NlcnZpY2UgIlVzZXMiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBkaWFsb2d1ZXNDb250cm9sbGVyID0gY29tcG9uZW50ICJEaWFsb2d1ZXMgY29udHJvbGxlciIgewogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gZGlhbG9ndWVzU2VydmljZSAiVXNlcyIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgICAgICBXRUIgPSBjb250YWluZXIgIldFQiIgewogICAgICAgICAgICAgICAgdGhpcyAtPiBBUEkgIlVzZXMiCiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9CiAgICB2aWV3cyB7CiAgICAgICAgc3R5bGVzIHsKICAgICAgICAgICAvKiBlbGVtZW50IHBheW1lbnQgewogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjMTExMTExCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCBzb2Z0d2FyZSB7CiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICM1NTU1NTUKICAgICAgICAgICAgfSovCiAgICAgICAgfQogICAgICAgIC8qc3lzdGVtQ29udGV4dCBzb2Z0d2FyZVN5c3RlbSB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgIH0qLwogICAgICAgIGNvbnRhaW5lciBzb2Z0d2FyZVN5c3RlbSB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgIH0KICAgICAgICBjb21wb25lbnQgQVBJIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgfQogICAgICAgIGNvbXBvbmVudCBEYXRhYmFzZSB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgIH0KICAgICAgICB0aGVtZSBkZWZhdWx0CiAgICB9Cn0K"
+    "structurizr.dsl" : "d29ya3NwYWNlIHsKICAgIG1vZGVsIHsKICAgICAgICBzb2Z0d2FyZVN5c3RlbSA9IHNvZnR3YXJlU3lzdGVtICJNZXNzZW5nZXIiIHsKICAgICAgICAgICAgZGF0YWJhc2UgPSBjb250YWluZXIgIkRhdGFiYXNlIiB7CiAgICAgICAgICAgIH0KICAgICAgICAgICAgV0VCID0gY29udGFpbmVyICJXRUIiIHsKICAgICAgICAgICAgfQogICAgICAgICAgICBBUEkgPSBjb250YWluZXIgIkFQSSIgewogICAgICAgICAgICAgICAgdGFncyAic29mdHdhcmUiCiAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgIGRiQ29udGV4dCA9IGNvbXBvbmVudCAiREIgY29udGV4dCIgewogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gZGF0YWJhc2UgIlVzZXMiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBtZXNzYWdlc1JlcG9zaXRvcnkgPSBjb21wb25lbnQgIk1lc3NhZ2VzIHJlcG9zaXRvcnkiIHsKICAgICAgICAgICAgICAgICAgICB0aGlzIC0+IGRiQ29udGV4dCAiQ1JVRCIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgbWFzc1RyYW5zaXQgPSBjb21wb25lbnQgIk1hc3MgdHJhbnNpdCIgewogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gbWVzc2FnZXNSZXBvc2l0b3J5ICJVc2VzIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICBzaWduYWxSID0gY29tcG9uZW50ICJTaWduYWxSIiB7CiAgICAgICAgICAgICAgICAgICAgdGhpcyAtPiBXRUIgIlNlbmRzIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICBtZXNzYWdlc1NlcnZpY2UgPSBjb21wb25lbnQgIk1lc3NhZ2VzIHNlcnZpY2UiIHsKICAgICAgICAgICAgICAgICAgICB0aGlzIC0+IG1hc3NUcmFuc2l0ICJVc2VzIgogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gc2lnbmFsUiAiVXNlcyIKICAgICAgICAgICAgICAgICAgICB0aGlzIC0+IG1lc3NhZ2VzUmVwb3NpdG9yeSAiVXNlcyIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIG1lc3NhZ2VzQ29udHJvbGxlciA9IGNvbXBvbmVudCAiTWVzc2FnZXMgY29udHJvbGxlciIgewogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gbWVzc2FnZXNTZXJ2aWNlICJVc2VzIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CiAgICAgICAgICAgIFdFQiAtPiBtZXNzYWdlc0NvbnRyb2xsZXIgIlVzZXMiCiAgICAgICAgfQogICAgfQogICAgdmlld3MgewogICAgICAgIHN0eWxlcyB7CiAgICAgICAgICAgLyogZWxlbWVudCBwYXltZW50IHsKICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzExMTExMQogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgc29mdHdhcmUgewogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjNTU1NTU1CiAgICAgICAgICAgIH0qLwogICAgICAgIH0KICAgICAgICAvKnN5c3RlbUNvbnRleHQgc29mdHdhcmVTeXN0ZW0gewogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICB9Ki8KICAgICAgICBjb250YWluZXIgc29mdHdhcmVTeXN0ZW0gewogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICB9CiAgICAgICAgY29tcG9uZW50IEFQSSB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgIH0KICAgICAgICB0aGVtZSBkZWZhdWx0CiAgICB9Cn0K"
   },
   "configuration" : { },
   "model" : {
@@ -14,175 +16,128 @@
       "name" : "Messenger",
       "location" : "Unspecified",
       "containers" : [ {
-        "id" : "2",
+        "id" : "3",
         "tags" : "Element,Container",
-        "name" : "Database",
+        "name" : "WEB",
+        "relationships" : [ {
+          "id" : "21",
+          "tags" : "Relationship",
+          "sourceId" : "3",
+          "destinationId" : "19",
+          "description" : "Uses"
+        }, {
+          "id" : "22",
+          "sourceId" : "3",
+          "destinationId" : "4",
+          "description" : "Uses",
+          "linkedRelationshipId" : "21"
+        } ]
+      }, {
+        "id" : "4",
+        "tags" : "Element,Container,software",
+        "name" : "API",
+        "relationships" : [ {
+          "id" : "7",
+          "sourceId" : "4",
+          "destinationId" : "2",
+          "description" : "Uses",
+          "linkedRelationshipId" : "6"
+        }, {
+          "id" : "14",
+          "sourceId" : "4",
+          "destinationId" : "3",
+          "description" : "Sends",
+          "linkedRelationshipId" : "13"
+        } ],
         "components" : [ {
-          "id" : "4",
+          "id" : "19",
           "tags" : "Element,Component",
-          "name" : "Messages",
+          "name" : "Messages controller",
+          "relationships" : [ {
+            "id" : "20",
+            "tags" : "Relationship",
+            "sourceId" : "19",
+            "destinationId" : "15",
+            "description" : "Uses"
+          } ],
           "size" : 0
         }, {
-          "id" : "3",
+          "id" : "15",
           "tags" : "Element,Component",
-          "name" : "Users",
+          "name" : "Messages service",
+          "relationships" : [ {
+            "id" : "16",
+            "tags" : "Relationship",
+            "sourceId" : "15",
+            "destinationId" : "10",
+            "description" : "Uses"
+          }, {
+            "id" : "17",
+            "tags" : "Relationship",
+            "sourceId" : "15",
+            "destinationId" : "12",
+            "description" : "Uses"
+          }, {
+            "id" : "18",
+            "tags" : "Relationship",
+            "sourceId" : "15",
+            "destinationId" : "8",
+            "description" : "Uses"
+          } ],
+          "size" : 0
+        }, {
+          "id" : "12",
+          "tags" : "Element,Component",
+          "name" : "SignalR",
+          "relationships" : [ {
+            "id" : "13",
+            "tags" : "Relationship",
+            "sourceId" : "12",
+            "destinationId" : "3",
+            "description" : "Sends"
+          } ],
           "size" : 0
         }, {
           "id" : "5",
           "tags" : "Element,Component",
-          "name" : "Dialogues",
+          "name" : "DB context",
           "relationships" : [ {
             "id" : "6",
             "tags" : "Relationship",
             "sourceId" : "5",
-            "destinationId" : "4",
-            "description" : "messages[]"
-          } ],
-          "size" : 0
-        }, {
-          "id" : "7",
-          "tags" : "Element,Component",
-          "name" : "users_dialogues",
-          "relationships" : [ {
-            "id" : "8",
-            "tags" : "Relationship",
-            "sourceId" : "7",
-            "destinationId" : "3",
-            "description" : "user"
-          }, {
-            "id" : "9",
-            "tags" : "Relationship",
-            "sourceId" : "7",
-            "destinationId" : "5",
-            "description" : "dialogue"
-          } ],
-          "size" : 0
-        } ]
-      }, {
-        "id" : "29",
-        "tags" : "Element,Container",
-        "name" : "WEB",
-        "relationships" : [ {
-          "id" : "30",
-          "tags" : "Relationship",
-          "sourceId" : "29",
-          "destinationId" : "10",
-          "description" : "Uses"
-        } ]
-      }, {
-        "id" : "10",
-        "tags" : "Element,Container,software",
-        "name" : "API",
-        "relationships" : [ {
-          "id" : "13",
-          "sourceId" : "10",
-          "destinationId" : "2",
-          "description" : "Uses",
-          "linkedRelationshipId" : "12"
-        } ],
-        "components" : [ {
-          "id" : "23",
-          "tags" : "Element,Component",
-          "name" : "Auth controller",
-          "relationships" : [ {
-            "id" : "24",
-            "tags" : "Relationship",
-            "sourceId" : "23",
-            "destinationId" : "14",
-            "description" : "Uses"
-          } ],
-          "size" : 0
-        }, {
-          "id" : "25",
-          "tags" : "Element,Component",
-          "name" : "Messages controller",
-          "relationships" : [ {
-            "id" : "26",
-            "tags" : "Relationship",
-            "sourceId" : "25",
-            "destinationId" : "19",
-            "description" : "Uses"
-          } ],
-          "size" : 0
-        }, {
-          "id" : "11",
-          "tags" : "Element,Component",
-          "name" : "DB context",
-          "relationships" : [ {
-            "id" : "12",
-            "tags" : "Relationship",
-            "sourceId" : "11",
             "destinationId" : "2",
             "description" : "Uses"
           } ],
           "size" : 0
         }, {
-          "id" : "16",
+          "id" : "8",
           "tags" : "Element,Component",
-          "name" : "Dialogues service",
+          "name" : "Messages repository",
           "relationships" : [ {
-            "id" : "17",
+            "id" : "9",
             "tags" : "Relationship",
-            "sourceId" : "16",
-            "destinationId" : "11",
-            "description" : "CRUD"
-          }, {
-            "id" : "18",
-            "tags" : "Relationship",
-            "sourceId" : "16",
-            "destinationId" : "14",
-            "description" : "Uses"
-          } ],
-          "size" : 0
-        }, {
-          "id" : "14",
-          "tags" : "Element,Component",
-          "name" : "Identity service",
-          "relationships" : [ {
-            "id" : "15",
-            "tags" : "Relationship",
-            "sourceId" : "14",
-            "destinationId" : "11",
+            "sourceId" : "8",
+            "destinationId" : "5",
             "description" : "CRUD"
           } ],
           "size" : 0
         }, {
-          "id" : "27",
+          "id" : "10",
           "tags" : "Element,Component",
-          "name" : "Dialogues controller",
+          "name" : "Mass transit",
           "relationships" : [ {
-            "id" : "28",
+            "id" : "11",
             "tags" : "Relationship",
-            "sourceId" : "27",
-            "destinationId" : "16",
-            "description" : "Uses"
-          } ],
-          "size" : 0
-        }, {
-          "id" : "19",
-          "tags" : "Element,Component",
-          "name" : "Messages service",
-          "relationships" : [ {
-            "id" : "20",
-            "tags" : "Relationship",
-            "sourceId" : "19",
-            "destinationId" : "11",
-            "description" : "CRUD"
-          }, {
-            "id" : "21",
-            "tags" : "Relationship",
-            "sourceId" : "19",
-            "destinationId" : "16",
-            "description" : "Uses"
-          }, {
-            "id" : "22",
-            "tags" : "Relationship",
-            "sourceId" : "19",
-            "destinationId" : "14",
+            "sourceId" : "10",
+            "destinationId" : "8",
             "description" : "Uses"
           } ],
           "size" : 0
         } ]
+      }, {
+        "id" : "2",
+        "tags" : "Element,Container",
+        "name" : "Database"
       } ],
       "documentation" : { }
     } ]
@@ -204,18 +159,28 @@
         "x" : 2278,
         "y" : 799
       }, {
-        "id" : "29",
+        "id" : "3",
         "x" : 778,
         "y" : 799
       }, {
-        "id" : "10",
+        "id" : "4",
         "x" : 1528,
         "y" : 799
       } ],
       "relationships" : [ {
-        "id" : "13"
+        "id" : "14",
+        "vertices" : [ {
+          "x" : 1378,
+          "y" : 799
+        } ]
       }, {
-        "id" : "30"
+        "id" : "7"
+      }, {
+        "id" : "22",
+        "vertices" : [ {
+          "x" : 1378,
+          "y" : 1099
+        } ]
       } ]
     } ],
     "componentViews" : [ {
@@ -226,95 +191,59 @@
         "width" : 3508,
         "height" : 1973
       },
-      "containerId" : "10",
+      "containerId" : "4",
       "externalContainerBoundariesVisible" : true,
       "elements" : [ {
-        "id" : "11",
-        "x" : 2150,
-        "y" : 735
-      }, {
-        "id" : "23",
-        "x" : 300,
-        "y" : 155
+        "id" : "12",
+        "x" : 1065,
+        "y" : 940
       }, {
         "id" : "2",
-        "x" : 2825,
-        "y" : 735
+        "x" : 2755,
+        "y" : 150
       }, {
-        "id" : "25",
-        "x" : 340,
-        "y" : 735
+        "id" : "3",
+        "x" : 550,
+        "y" : 1540
       }, {
-        "id" : "14",
-        "x" : 1540,
+        "id" : "15",
+        "x" : 550,
+        "y" : 490
+      }, {
+        "id" : "5",
+        "x" : 2045,
         "y" : 155
       }, {
-        "id" : "16",
-        "x" : 1540,
-        "y" : 1365
-      }, {
-        "id" : "27",
-        "x" : 355,
-        "y" : 1365
+        "id" : "8",
+        "x" : 1655,
+        "y" : 675
       }, {
         "id" : "19",
-        "x" : 1175,
-        "y" : 730
+        "x" : 280,
+        "y" : 925
+      }, {
+        "id" : "10",
+        "x" : 1210,
+        "y" : 135
       } ],
       "relationships" : [ {
         "id" : "18"
       }, {
         "id" : "17"
       }, {
-        "id" : "28"
+        "id" : "16"
       }, {
-        "id" : "15"
+        "id" : "13"
       }, {
-        "id" : "26"
+        "id" : "6"
       }, {
-        "id" : "24"
-      }, {
-        "id" : "12"
-      }, {
-        "id" : "22"
+        "id" : "11"
       }, {
         "id" : "21"
       }, {
-        "id" : "20"
-      } ]
-    }, {
-      "key" : "Messenger-Database-Component",
-      "order" : 3,
-      "paperSize" : "Slide_16_9",
-      "dimensions" : {
-        "width" : 3508,
-        "height" : 1973
-      },
-      "containerId" : "2",
-      "externalContainerBoundariesVisible" : true,
-      "elements" : [ {
-        "id" : "3",
-        "x" : 2278,
-        "y" : 1099
-      }, {
-        "id" : "4",
-        "x" : 2278,
-        "y" : 499
-      }, {
-        "id" : "5",
-        "x" : 1528,
-        "y" : 645
-      }, {
-        "id" : "7",
-        "x" : 778,
-        "y" : 874
-      } ],
-      "relationships" : [ {
-        "id" : "6"
-      }, {
-        "id" : "8"
-      }, {
         "id" : "9"
+      }, {
+        "id" : "20"
       } ]
     } ],
     "configuration" : {
