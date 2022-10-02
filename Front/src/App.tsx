@@ -4,6 +4,9 @@ import {List, Button, ListItem, ListItemText, Box, Divider, TextField} from "@mu
 import Message from "./entities/message";
 
 const BASE_URL = 'https://localhost:5002/';
+const SEND_MESSAGE = 'SendMessageMt';
+const MESSAGES = 'messages';
+
 const fetchFromBack = (url: string) => fetch(BASE_URL + url).then(res => res.json());
 const postToBack = (url: string, data: any) => fetch(
     BASE_URL + url,
@@ -19,7 +22,7 @@ function App() {
     const [inputMessage, setInputMessage] = useState('');
 
     useEffect(() => {
-        fetchFromBack('messages').then(setMessages);
+        fetchFromBack(MESSAGES).then(setMessages);
     }, [])
 
     return (
@@ -38,7 +41,7 @@ function App() {
                         }}>
                             {
                                 messages.map(m => (
-                                    <div style={{display: 'flex'}}>
+                                    <div>
                                         <ListItem>
                                             <ListItemText primary={m.text} secondary={m.userName}></ListItemText>
                                         </ListItem>
@@ -48,7 +51,7 @@ function App() {
                             }
                         </List>
                         <TextField variant="outlined" onChange={e => setInputMessage(e.target.value)}></TextField>
-                        <Button variant="outlined" onClick={() => postToBack("SendMessage", {
+                        <Button variant="outlined" onClick={() => postToBack(SEND_MESSAGE, {
                             Message: inputMessage,
                             UserName: userName
                         })}>Send</Button>
