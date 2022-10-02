@@ -1,5 +1,6 @@
 using System.Reflection;
 using Back;
+using Back.Hubs;
 using Back.Cucumbers;
 using Back.Repositories;
 using Back.Services;
@@ -17,6 +18,21 @@ services.AddDbContext<AppDbContext>();
 
 services.AddScoped<MessagesRepository>();
 services.AddScoped<MessagesService>();
+
+services.AddCors(options =>
+{
+    options.AddPolicy("ClientPermission", policy =>
+    {
+        policy.AllowAnyHeader()
+            .AllowAnyMethod()
+            // .WithOrigins("http://localhost:3000")
+            .AllowAnyOrigin()
+            .AllowCredentials();
+    });
+});
+
+// SignalR
+builder.Services.AddSignalR();
 
 services.AddMassTransit(config =>
 {
@@ -45,7 +61,8 @@ await using (var scope = app.Services.CreateAsyncScope())
 if (app.Environment.IsDevelopment())
     app.UseSwagger().UseSwaggerUI();
 
-app.UseCors(b => b.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+app.UseCors("ClientPermission");
+// app.UseCors(b => b.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
 app.Use(async (context, next) =>
 {
@@ -60,8 +77,13 @@ app.Use(async (context, next) =>
         await next();
 });
 
-app.UseHttpsRedirection()
+app
+    // .UseHttpsRedirection()
     .UseAuthentication()
     .UseAuthorization();
 app.MapControllers();
+
+// SignalR
+app.MapHub<ChatHub>("/chat");
+
 app.Run();
