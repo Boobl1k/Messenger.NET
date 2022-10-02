@@ -41,7 +41,7 @@ services.AddMassTransit(config =>
     config.SetKebabCaseEndpointNameFormatter();
     config.SetInMemorySagaRepositoryProvider();
 
-    config.AddConsumer<DefaultCucumber>();
+    config.AddCucumber<DefaultCucumber>();
 
     var assembly = Assembly.GetEntryAssembly();
 

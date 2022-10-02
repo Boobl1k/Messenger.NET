@@ -4,7 +4,7 @@ using MassTransit;
 
 namespace Back.Cucumbers;
 
-public class DefaultCucumber : IConsumer<MessageContract>
+public class DefaultCucumber : ICucumber<MessageContract>
 {
     private readonly ILogger<DefaultCucumber> _logger;
     private readonly MessagesService _messagesService;
