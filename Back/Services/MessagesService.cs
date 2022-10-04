@@ -1,13 +1,20 @@
+using Back.Contracts;
 using Back.Entities;
 using Back.Repositories;
+using MassTransit;
 
 namespace Back.Services;
 
 public class MessagesService
 {
     private readonly MessagesRepository _messagesRepository;
+    private readonly IPublishEndpoint _publishEndpoint;
 
-    public MessagesService(MessagesRepository messagesRepository) => _messagesRepository = messagesRepository;
+    public MessagesService(MessagesRepository messagesRepository, IPublishEndpoint publishEndpoint)
+    {
+        _messagesRepository = messagesRepository;
+        _publishEndpoint = publishEndpoint;
+    }
 
     public async Task<IEnumerable<Message>> GetLast(int count = 20) => await _messagesRepository.GetLast(count);
 
@@ -22,4 +29,7 @@ public class MessagesService
 
         return await _messagesRepository.AddMessage(message) ? message : null;
     }
+
+    public async Task Publish(string userName, string text) =>
+        await _publishEndpoint.Publish(new MessageContract(userName, text));
 }

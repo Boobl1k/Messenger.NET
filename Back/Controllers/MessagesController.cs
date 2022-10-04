@@ -1,11 +1,5 @@
-using Back.Contracts;
-using Back.Entities;
-using Back.Hubs;
-using Back.Hubs.Clients;
 using Back.Services;
-using MassTransit;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SignalR;
 
 namespace Back.Controllers;
 
@@ -14,16 +8,9 @@ namespace Back.Controllers;
 public class MessagesController : ControllerBase
 {
     private readonly MessagesService _messagesService;
-    private readonly IPublishEndpoint _publishEndpoint;
-    private readonly IHubContext<ChatHub, IChatClient> _chatHub;
 
-    public MessagesController(MessagesService messagesService, IPublishEndpoint publishEndpoint,
-        IHubContext<ChatHub, IChatClient> chatHub)
-    {
+    public MessagesController(MessagesService messagesService) => 
         _messagesService = messagesService;
-        _publishEndpoint = publishEndpoint;
-        _chatHub = chatHub;
-    }
 
     [HttpGet]
     public async Task<IActionResult> GetLastHundred() => new JsonResult(await _messagesService.GetLast(100));
@@ -33,10 +20,7 @@ public class MessagesController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> SendMessage([FromBody] MessageInput messageInput)
     {
-        await _chatHub.Clients.All.ReceiveMessage(new Message
-            { Text = messageInput.Text, UserName = messageInput.UserName });
-
-        await _publishEndpoint.Publish(new MessageContract(messageInput.UserName, messageInput.Text));
+        await _messagesService.Publish(messageInput.UserName, messageInput.Text);
         return Ok();
     }
 }
