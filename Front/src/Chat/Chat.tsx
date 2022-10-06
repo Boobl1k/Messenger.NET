@@ -4,11 +4,9 @@ import {v4 as uuidv4} from 'uuid';
 import ChatWindow from "./ChatWindow/ChatWindow";
 import ChatInput from "./ChatInput/ChatInput";
 import IMessage from "../entities/IMessage";
-import axios from "axios";
+import axios from "../axios";
 import {Button} from "@mui/material";
-
-const BASE_URL = 'http://localhost:81/';
-//const BASE_URL = 'http://192.168.76.216:81/';
+import {BASE_URL} from "../config";
 
 export default function Chat() {
     const [chat, setChat] = useState<IMessage[]>([]);
@@ -37,7 +35,7 @@ export default function Chat() {
     }, [connection]);
 
     useEffect(() => {
-        axios.get<IMessage[]>(BASE_URL + 'api/messages').then(res => setChat(res.data));
+        axios.get<IMessage[]>('api/messages').then(res => setChat(res.data));
     }, [])
 
     const sendMessage = async (userName: string, text: string) => {
@@ -51,18 +49,13 @@ export default function Chat() {
         if (connection)
             await connection
                 .send("SendMessage", chatMessage)
-                .then(async () => {
-                    try {
-                    } catch (error) {
-                        console.log('Publishing in MassTransit failed.', error);
-                    }
-                });
+                .catch(() => console.log('Publishing in SignalR failed'));
     }
 
     return (
         <div className="flex flex-col flex-grow w-full max-w-xl bg-white shadow-xl rounded-lg overflow-hidden">
             <Button onClick={async () => {
-                await axios.delete(BASE_URL + 'api/messages');
+                await axios.delete('api/messages');
                 setChat([]);
             }}>
                 Reset
