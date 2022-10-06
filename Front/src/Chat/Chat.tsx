@@ -33,14 +33,7 @@ export default function Chat() {
                     setChat(latestChat.current);
 
                     connection.on('ReceiveMessage', (message: IMessage) => {
-                        try {
-                            const updatedChat = [...(latestChat.current as IMessage[])];
-                            updatedChat.push(message);
- 
-                            setChat(updatedChat);
-                        } catch (error) {
-                            console.log('Receiving message failed.', error);
-                        }
+                        setChat(prev => [...prev, message]);
                     });
                 })
                 .catch(error => console.log('Connection failed: ', error));
