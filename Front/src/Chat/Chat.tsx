@@ -9,8 +9,7 @@ import axios from "axios";
 export default function Chat() {
     const [chat, setChat] = useState<IMessage[]>([]);
     const [connection, setConnection] = useState<null | HubConnection>(null);
-    // const latestChat = useRef<IMessage[] | null>(null);
-
+    const latestChat = useRef<IMessage[] | null>(null);
     // latestChat.current = chat;
 
     useEffect(() => {
@@ -28,22 +27,17 @@ export default function Chat() {
                 .start()
                 .then(async () => {
                     console.log('Connected to signalR!');
+                    console.log(`Received message, updating chat!`);
                     const response = await axios.get<IMessage[]>('http://localhost:5001/api/messages');
-                    setChat(response.data);
+                    latestChat.current = response.data;
+                    setChat(latestChat.current);
 
-                    connection.on('ReceiveMessage', async () => {
-                        //TODO: что тут не так: например, я отправил сообщение. триггернулся хендлер ReceiveMessage, который вызвал REST по получению 100 сообщений из бд.
-                        // но ещё после отправки сообщения, через масстранзит в бд записалось мною отправленное сообщение. 
-                        // Но хендлер ReceiveMessage триггернулся моментально на уровне сигналр, поэтому из бд достались старые данные.
-                        // И чтобы отобразить это сообщение, придется ещё одно сообщение отправить. Попробую фиксануть.
-                        
+                    connection.on('ReceiveMessage', (message: IMessage) => {
                         try {
-                            // const updatedChat = [...(latestChat.current as IMessage[])];
-                            
-                            console.log(`Received message, updating chat!`);
-                            const response = await axios.get<IMessage[]>('http://localhost:5001/api/messages');
+                            const updatedChat = [...(latestChat.current as IMessage[])];
+                            updatedChat.push(message);
  
-                            setChat(response.data);
+                            setChat(updatedChat);
                         } catch (error) {
                             console.log('Receiving message failed.', error);
                         }
