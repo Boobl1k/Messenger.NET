@@ -1,5 +1,6 @@
 using Back.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Back.Repositories;
 
@@ -19,6 +20,12 @@ public class MessagesRepository
     public async Task<bool> AddMessage(Message message)
     {
         _dbContext.Messages.Add(message);
+        return await _dbContext.SaveChangesAsync() > 0;
+    }
+
+    public async Task<bool> RemoveAll()
+    {
+        _dbContext.Messages.RemoveRange(_dbContext.Messages);
         return await _dbContext.SaveChangesAsync() > 0;
     }
 }

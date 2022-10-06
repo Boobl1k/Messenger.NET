@@ -1,23 +1,24 @@
-using Back.Contracts;
-using Back.Services;
+using Back.Entities;
+using Back.Repositories;
 using MassTransit;
 
 namespace Back.Cucumbers;
 
-public class DefaultCucumber : ICucumber<MessageContract>
+// ReSharper disable once ClassNeverInstantiated.Global
+public class DefaultCucumber : ICucumber<Message>
 {
     private readonly ILogger<DefaultCucumber> _logger;
-    private readonly MessagesService _messagesService;
+    private readonly MessagesRepository _messagesRepository;
 
-    public DefaultCucumber(ILogger<DefaultCucumber> logger, MessagesService messagesService)
+    public DefaultCucumber(ILogger<DefaultCucumber> logger, MessagesRepository messagesRepository)
     {
         _logger = logger;
-        _messagesService = messagesService;
+        _messagesRepository = messagesRepository;
     }
 
-    public async Task Consume(ConsumeContext<MessageContract> context)
+    public async Task Consume(ConsumeContext<Message> context)
     {
         _logger.LogInformation($"{context.Message.UserName} sends '{context.Message.Text}'");
-        await _messagesService.AddMessage(context.Message.Text, context.Message.UserName);
+        await _messagesRepository.AddMessage(context.Message);
     }
 }

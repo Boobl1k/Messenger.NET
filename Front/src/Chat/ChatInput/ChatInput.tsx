@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Input, InputLabel} from "@mui/material";
 
 interface ChatInputProps {
     sendMessage: (user: string, message: string) => void;
@@ -31,18 +32,16 @@ export default function ChatInput({sendMessage}: ChatInputProps) {
 
     return (
         <form onSubmit={submitHandler}>
-            <label htmlFor="user">User:</label>
-            <br/>
-            <input
+            <InputLabel htmlFor="user">User:</InputLabel>
+            <Input
                 id="user"
                 name="user"
                 value={user}
                 onChange={userUpdateHandler}
             />
-            <br/>
-            <label htmlFor="message">Message:</label>
-            <br/>
-            <input
+            <br/><br/>
+            <InputLabel htmlFor="message">Message:</InputLabel>
+            <Input
                 type="text"
                 id="message"
                 name="message"
@@ -50,7 +49,7 @@ export default function ChatInput({sendMessage}: ChatInputProps) {
                 onChange={messageUpdateHandler}
             />
             <br/><br/>
-            <button>Submit</button>
+            <Input type="Submit" value="Submit"></Input>
         </form>
     )
 }

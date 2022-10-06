@@ -1,4 +1,3 @@
-using Back.Contracts;
 using Back.Entities;
 using Back.Repositories;
 using MassTransit;
@@ -18,15 +17,12 @@ public class MessagesService
 
     public async Task<IEnumerable<Message>> GetLast(int count = 20) => await _messagesRepository.GetLast(count);
 
-    public async Task<Message?> AddMessage(string messageText, string userName)
+    public async Task<Message> AddMessage(Message message)
     {
-        var message = new Message
-        {
-            Text = messageText,
-            UserName = userName,
-            DateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc)
-        };
-
-        return await _messagesRepository.AddMessage(message) ? message : null;
+        await _publishEndpoint.Publish(message);
+        return message;
     }
+
+    public async Task<bool> RemoveAll() => 
+        await _messagesRepository.RemoveAll();
 }
