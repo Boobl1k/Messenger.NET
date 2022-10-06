@@ -9,8 +9,6 @@ import axios from "axios";
 export default function Chat() {
     const [chat, setChat] = useState<IMessage[]>([]);
     const [connection, setConnection] = useState<null | HubConnection>(null);
-    const latestChat = useRef<IMessage[] | null>(null);
-    // latestChat.current = chat;
 
     useEffect(() => {
         const connect = new HubConnectionBuilder()
@@ -26,11 +24,8 @@ export default function Chat() {
             connection
                 .start()
                 .then(async () => {
-                    console.log('Connected to signalR!');
-                    console.log(`Received message, updating chat!`);
                     const response = await axios.get<IMessage[]>('http://localhost:5001/api/messages');
-                    latestChat.current = response.data;
-                    setChat(latestChat.current);
+                    setChat(response.data);
 
                     connection.on('ReceiveMessage', (message: IMessage) => {
                         setChat(prev => [...prev, message]);
@@ -53,9 +48,7 @@ export default function Chat() {
                 .send("SendMessage", chatMessage)
                 .then(async () => {
                     try {
-                        console.log('Published in MassTransit');
-                        const response = await axios.post<IMessage>('http://localhost:5001/api/messages', chatMessage);
-                        console.log(response)
+                        await axios.post<IMessage>('http://localhost:5001/api/messages', chatMessage);
                     } catch (error) {
                         console.log('Publishing in MassTransit failed.', error);
                     }
