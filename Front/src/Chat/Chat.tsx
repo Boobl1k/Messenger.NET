@@ -58,16 +58,16 @@ export default function Chat() {
     }
 
     return (
-        <div>
+        <div className="flex flex-col flex-grow w-full max-w-xl bg-white shadow-xl rounded-lg overflow-hidden">
             <Button onClick={async () => {
                 await axios.delete('http://localhost:5001/api/messages');
                 setChat([]);
             }}>
                 Reset
             </Button>
-            <ChatInput sendMessage={sendMessage}/>
-            <hr/>
             <ChatWindow chat={chat}/>
+            <hr/>
+            <ChatInput sendMessage={sendMessage}/>
         </div>
     );
 }

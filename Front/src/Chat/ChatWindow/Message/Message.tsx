@@ -6,9 +6,14 @@ interface MessageProps {
 
 export default function Message({message}: MessageProps) {
     return (
-        <div style={{background: "#eee", borderRadius: '5px', padding: '0 10px'}}>
-            <p><b>{message.userName}</b></p>
-            <p>{message.text}</p>
+        <div className="flex w-full mt-2 space-x-3 max-w-xs">
+            <div className="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"></div>
+            <div className="bg-blue-600 text-white p-3 rounded-r-lg rounded-bl-lg">
+                <div>
+                    <p className="text-sm"><b>{message.userName}</b></p>
+                    <p className="text-sm">{message.text}</p>
+                </div>
+            </div>
         </div>
     );
 }

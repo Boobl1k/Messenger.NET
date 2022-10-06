@@ -31,24 +31,22 @@ export default function ChatInput({sendMessage}: ChatInputProps) {
     }
 
     return (
-        <form onSubmit={submitHandler}>
-            <InputLabel htmlFor="user">User:</InputLabel>
-            <Input
+        <form onSubmit={submitHandler} className="bg-gray-300 p-1">
+            <input
                 id="user"
                 name="user"
                 value={user}
                 onChange={userUpdateHandler}
+                className="flex items-center h-7 w-full rounded px-2 text-sm mb-1"
             />
-            <br/><br/>
-            <InputLabel htmlFor="message">Message:</InputLabel>
-            <Input
+            <input
                 type="text"
                 id="message"
                 name="message"
                 value={message}
                 onChange={messageUpdateHandler}
+                className="flex items-center h-7 w-full rounded px-2 text-sm"
             />
-            <br/><br/>
             <Input type="Submit" value="Submit"></Input>
         </form>
     )

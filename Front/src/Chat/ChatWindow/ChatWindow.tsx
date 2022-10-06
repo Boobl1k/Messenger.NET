@@ -8,7 +8,7 @@ interface ChatWindowProps {
 
 export default function ChatWindow({chat}: ChatWindowProps) {
     return (
-        <div>
+        <div className="flex flex-col flex-grow h-0 p-4 overflow-auto">
             {chat.map(message => <Message message={message} key={message.id}/>)}
         </div>
     )
