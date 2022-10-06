@@ -31,7 +31,7 @@ services.AddCors(options =>
     {
         policy.AllowAnyHeader()
             .AllowAnyMethod()
-            .WithOrigins("http://localhost")
+            .WithOrigins("http://localhost", "http://192.168.76.216")
             .AllowCredentials();
     });
 });

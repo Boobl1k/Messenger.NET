@@ -38,6 +38,7 @@ export default function ChatInput({sendMessage}: ChatInputProps) {
                 value={user}
                 onChange={userUpdateHandler}
                 className="flex items-center h-7 w-full rounded px-2 text-sm mb-1"
+                placeholder="username"
             />
             <input
                 type="text"
@@ -46,8 +47,9 @@ export default function ChatInput({sendMessage}: ChatInputProps) {
                 value={message}
                 onChange={messageUpdateHandler}
                 className="flex items-center h-7 w-full rounded px-2 text-sm"
+                placeholder="message"
             />
-            <Input type="Submit" value="Submit"></Input>
+            <Input type="Submit" value="Submit" className="invisible"></Input>
         </form>
     )
 }

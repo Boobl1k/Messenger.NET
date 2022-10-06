@@ -7,13 +7,16 @@ import IMessage from "../entities/IMessage";
 import axios from "axios";
 import {Button} from "@mui/material";
 
+const BASE_URL = 'http://localhost:81/';
+//const BASE_URL = 'http://192.168.76.216:81/';
+
 export default function Chat() {
     const [chat, setChat] = useState<IMessage[]>([]);
     const [connection, setConnection] = useState<null | HubConnection>(null);
 
     useEffect(() => {
         const connect = new HubConnectionBuilder()
-            .withUrl('http://localhost:5001/chat')
+            .withUrl(BASE_URL + 'chat')
             .withAutomaticReconnect()
             .build();
 
@@ -34,7 +37,7 @@ export default function Chat() {
     }, [connection]);
 
     useEffect(() => {
-        axios.get<IMessage[]>('http://localhost:5001/api/messages').then(res => setChat(res.data));
+        axios.get<IMessage[]>(BASE_URL + 'api/messages').then(res => setChat(res.data));
     }, [])
 
     const sendMessage = async (userName: string, text: string) => {
@@ -50,7 +53,6 @@ export default function Chat() {
                 .send("SendMessage", chatMessage)
                 .then(async () => {
                     try {
-                        //await axios.post<IMessage>('http://localhost:5001/api/messages', chatMessage);
                     } catch (error) {
                         console.log('Publishing in MassTransit failed.', error);
                     }
@@ -60,7 +62,7 @@ export default function Chat() {
     return (
         <div className="flex flex-col flex-grow w-full max-w-xl bg-white shadow-xl rounded-lg overflow-hidden">
             <Button onClick={async () => {
-                await axios.delete('http://localhost:5001/api/messages');
+                await axios.delete(BASE_URL + 'api/messages');
                 setChat([]);
             }}>
                 Reset
