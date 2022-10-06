@@ -14,25 +14,23 @@ workspace {
                 messagesRepository = component "Messages repository" {
                     this -> dbContext "CRUD"
                 }
-                
-                massTransit = component "Mass transit" {
+                messagesService = component "Messages service" {
                     this -> messagesRepository "Uses"
                 }
-                
+                massTransit = component "Mass transit" {
+                    this -> messagesService "Uses"
+                }
                 signalR = component "SignalR" {
                     this -> WEB "Sends"
-                }
-                
-                messagesService = component "Messages service" {
-                    this -> massTransit "Uses"
-                    this -> signalR "Uses"
-                    this -> messagesRepository "Uses"
+                    this -> messagesService "Uses"
                 }
                 messagesController = component "Messages controller" {
                     this -> messagesService "Uses"
+                    this -> massTransit "Uses"
                 }
             }
             WEB -> messagesController "Uses"
+            WEB -> signalR "Sends"
         }
     }
     views {

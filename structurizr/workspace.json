@@ -3,10 +3,10 @@
   "name" : "Name",
   "description" : "Description",
   "revision" : 0,
-  "lastModifiedDate" : "2022-10-02T14:11:31Z",
+  "lastModifiedDate" : "2022-10-06T07:35:29Z",
   "lastModifiedAgent" : "structurizr-web/2827/diagram",
   "properties" : {
-    "structurizr.dsl" : "d29ya3NwYWNlIHsKICAgIG1vZGVsIHsKICAgICAgICBzb2Z0d2FyZVN5c3RlbSA9IHNvZnR3YXJlU3lzdGVtICJNZXNzZW5nZXIiIHsKICAgICAgICAgICAgZGF0YWJhc2UgPSBjb250YWluZXIgIkRhdGFiYXNlIiB7CiAgICAgICAgICAgIH0KICAgICAgICAgICAgV0VCID0gY29udGFpbmVyICJXRUIiIHsKICAgICAgICAgICAgfQogICAgICAgICAgICBBUEkgPSBjb250YWluZXIgIkFQSSIgewogICAgICAgICAgICAgICAgdGFncyAic29mdHdhcmUiCiAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgIGRiQ29udGV4dCA9IGNvbXBvbmVudCAiREIgY29udGV4dCIgewogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gZGF0YWJhc2UgIlVzZXMiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBtZXNzYWdlc1JlcG9zaXRvcnkgPSBjb21wb25lbnQgIk1lc3NhZ2VzIHJlcG9zaXRvcnkiIHsKICAgICAgICAgICAgICAgICAgICB0aGlzIC0+IGRiQ29udGV4dCAiQ1JVRCIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgbWFzc1RyYW5zaXQgPSBjb21wb25lbnQgIk1hc3MgdHJhbnNpdCIgewogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gbWVzc2FnZXNSZXBvc2l0b3J5ICJVc2VzIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICBzaWduYWxSID0gY29tcG9uZW50ICJTaWduYWxSIiB7CiAgICAgICAgICAgICAgICAgICAgdGhpcyAtPiBXRUIgIlNlbmRzIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICBtZXNzYWdlc1NlcnZpY2UgPSBjb21wb25lbnQgIk1lc3NhZ2VzIHNlcnZpY2UiIHsKICAgICAgICAgICAgICAgICAgICB0aGlzIC0+IG1hc3NUcmFuc2l0ICJVc2VzIgogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gc2lnbmFsUiAiVXNlcyIKICAgICAgICAgICAgICAgICAgICB0aGlzIC0+IG1lc3NhZ2VzUmVwb3NpdG9yeSAiVXNlcyIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIG1lc3NhZ2VzQ29udHJvbGxlciA9IGNvbXBvbmVudCAiTWVzc2FnZXMgY29udHJvbGxlciIgewogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gbWVzc2FnZXNTZXJ2aWNlICJVc2VzIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CiAgICAgICAgICAgIFdFQiAtPiBtZXNzYWdlc0NvbnRyb2xsZXIgIlVzZXMiCiAgICAgICAgfQogICAgfQogICAgdmlld3MgewogICAgICAgIHN0eWxlcyB7CiAgICAgICAgICAgLyogZWxlbWVudCBwYXltZW50IHsKICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzExMTExMQogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgc29mdHdhcmUgewogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjNTU1NTU1CiAgICAgICAgICAgIH0qLwogICAgICAgIH0KICAgICAgICAvKnN5c3RlbUNvbnRleHQgc29mdHdhcmVTeXN0ZW0gewogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICB9Ki8KICAgICAgICBjb250YWluZXIgc29mdHdhcmVTeXN0ZW0gewogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICB9CiAgICAgICAgY29tcG9uZW50IEFQSSB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgIH0KICAgICAgICB0aGVtZSBkZWZhdWx0CiAgICB9Cn0K"
+    "structurizr.dsl" : "d29ya3NwYWNlIHsKICAgIG1vZGVsIHsKICAgICAgICBzb2Z0d2FyZVN5c3RlbSA9IHNvZnR3YXJlU3lzdGVtICJNZXNzZW5nZXIiIHsKICAgICAgICAgICAgZGF0YWJhc2UgPSBjb250YWluZXIgIkRhdGFiYXNlIiB7CiAgICAgICAgICAgIH0KICAgICAgICAgICAgV0VCID0gY29udGFpbmVyICJXRUIiIHsKICAgICAgICAgICAgfQogICAgICAgICAgICBBUEkgPSBjb250YWluZXIgIkFQSSIgewogICAgICAgICAgICAgICAgdGFncyAic29mdHdhcmUiCiAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgIGRiQ29udGV4dCA9IGNvbXBvbmVudCAiREIgY29udGV4dCIgewogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gZGF0YWJhc2UgIlVzZXMiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBtZXNzYWdlc1JlcG9zaXRvcnkgPSBjb21wb25lbnQgIk1lc3NhZ2VzIHJlcG9zaXRvcnkiIHsKICAgICAgICAgICAgICAgICAgICB0aGlzIC0+IGRiQ29udGV4dCAiQ1JVRCIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIG1lc3NhZ2VzU2VydmljZSA9IGNvbXBvbmVudCAiTWVzc2FnZXMgc2VydmljZSIgewogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gbWVzc2FnZXNSZXBvc2l0b3J5ICJVc2VzIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgbWFzc1RyYW5zaXQgPSBjb21wb25lbnQgIk1hc3MgdHJhbnNpdCIgewogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gbWVzc2FnZXNTZXJ2aWNlICJVc2VzIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgc2lnbmFsUiA9IGNvbXBvbmVudCAiU2lnbmFsUiIgewogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gV0VCICJTZW5kcyIKICAgICAgICAgICAgICAgICAgICB0aGlzIC0+IG1lc3NhZ2VzU2VydmljZSAiVXNlcyIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIG1lc3NhZ2VzQ29udHJvbGxlciA9IGNvbXBvbmVudCAiTWVzc2FnZXMgY29udHJvbGxlciIgewogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gbWVzc2FnZXNTZXJ2aWNlICJVc2VzIgogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gbWFzc1RyYW5zaXQgIlVzZXMiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICAgICAgV0VCIC0+IG1lc3NhZ2VzQ29udHJvbGxlciAiVXNlcyIKICAgICAgICAgICAgV0VCIC0+IHNpZ25hbFIgIlNlbmRzIgogICAgICAgIH0KICAgIH0KICAgIHZpZXdzIHsKICAgICAgICBzdHlsZXMgewogICAgICAgICAgIC8qIGVsZW1lbnQgcGF5bWVudCB7CiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICMxMTExMTEKICAgICAgICAgICAgfQogICAgICAgICAgICBlbGVtZW50IHNvZnR3YXJlIHsKICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzU1NTU1NQogICAgICAgICAgICB9Ki8KICAgICAgICB9CiAgICAgICAgLypzeXN0ZW1Db250ZXh0IHNvZnR3YXJlU3lzdGVtIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgfSovCiAgICAgICAgY29udGFpbmVyIHNvZnR3YXJlU3lzdGVtIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgfQogICAgICAgIGNvbXBvbmVudCBBUEkgewogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICB9CiAgICAgICAgdGhlbWUgZGVmYXVsdAogICAgfQp9Cg=="
   },
   "configuration" : { },
   "model" : {
@@ -16,6 +16,10 @@
       "name" : "Messenger",
       "location" : "Unspecified",
       "containers" : [ {
+        "id" : "2",
+        "tags" : "Element,Container",
+        "name" : "Database"
+      }, {
         "id" : "3",
         "tags" : "Element,Container",
         "name" : "WEB",
@@ -23,8 +27,14 @@
           "id" : "21",
           "tags" : "Relationship",
           "sourceId" : "3",
-          "destinationId" : "19",
+          "destinationId" : "18",
           "description" : "Uses"
+        }, {
+          "id" : "23",
+          "tags" : "Relationship",
+          "sourceId" : "3",
+          "destinationId" : "14",
+          "description" : "Sends"
         }, {
           "id" : "22",
           "sourceId" : "3",
@@ -37,75 +47,57 @@
         "tags" : "Element,Container,software",
         "name" : "API",
         "relationships" : [ {
+          "id" : "16",
+          "sourceId" : "4",
+          "destinationId" : "3",
+          "description" : "Sends",
+          "linkedRelationshipId" : "15"
+        }, {
           "id" : "7",
           "sourceId" : "4",
           "destinationId" : "2",
           "description" : "Uses",
           "linkedRelationshipId" : "6"
-        }, {
-          "id" : "14",
-          "sourceId" : "4",
-          "destinationId" : "3",
-          "description" : "Sends",
-          "linkedRelationshipId" : "13"
         } ],
         "components" : [ {
-          "id" : "19",
-          "tags" : "Element,Component",
-          "name" : "Messages controller",
-          "relationships" : [ {
-            "id" : "20",
-            "tags" : "Relationship",
-            "sourceId" : "19",
-            "destinationId" : "15",
-            "description" : "Uses"
-          } ],
-          "size" : 0
-        }, {
-          "id" : "15",
+          "id" : "10",
           "tags" : "Element,Component",
           "name" : "Messages service",
           "relationships" : [ {
-            "id" : "16",
+            "id" : "11",
             "tags" : "Relationship",
-            "sourceId" : "15",
-            "destinationId" : "10",
-            "description" : "Uses"
-          }, {
-            "id" : "17",
-            "tags" : "Relationship",
-            "sourceId" : "15",
-            "destinationId" : "12",
-            "description" : "Uses"
-          }, {
-            "id" : "18",
-            "tags" : "Relationship",
-            "sourceId" : "15",
+            "sourceId" : "10",
             "destinationId" : "8",
             "description" : "Uses"
           } ],
           "size" : 0
         }, {
-          "id" : "12",
+          "id" : "14",
           "tags" : "Element,Component",
           "name" : "SignalR",
           "relationships" : [ {
-            "id" : "13",
+            "id" : "17",
             "tags" : "Relationship",
-            "sourceId" : "12",
+            "sourceId" : "14",
+            "destinationId" : "10",
+            "description" : "Uses"
+          }, {
+            "id" : "15",
+            "tags" : "Relationship",
+            "sourceId" : "14",
             "destinationId" : "3",
             "description" : "Sends"
           } ],
           "size" : 0
         }, {
-          "id" : "5",
+          "id" : "12",
           "tags" : "Element,Component",
-          "name" : "DB context",
+          "name" : "Mass transit",
           "relationships" : [ {
-            "id" : "6",
+            "id" : "13",
             "tags" : "Relationship",
-            "sourceId" : "5",
-            "destinationId" : "2",
+            "sourceId" : "12",
+            "destinationId" : "10",
             "description" : "Uses"
           } ],
           "size" : 0
@@ -122,22 +114,36 @@
           } ],
           "size" : 0
         }, {
-          "id" : "10",
+          "id" : "5",
           "tags" : "Element,Component",
-          "name" : "Mass transit",
+          "name" : "DB context",
           "relationships" : [ {
-            "id" : "11",
+            "id" : "6",
             "tags" : "Relationship",
-            "sourceId" : "10",
-            "destinationId" : "8",
+            "sourceId" : "5",
+            "destinationId" : "2",
+            "description" : "Uses"
+          } ],
+          "size" : 0
+        }, {
+          "id" : "18",
+          "tags" : "Element,Component",
+          "name" : "Messages controller",
+          "relationships" : [ {
+            "id" : "19",
+            "tags" : "Relationship",
+            "sourceId" : "18",
+            "destinationId" : "10",
+            "description" : "Uses"
+          }, {
+            "id" : "20",
+            "tags" : "Relationship",
+            "sourceId" : "18",
+            "destinationId" : "12",
             "description" : "Uses"
           } ],
           "size" : 0
         } ]
-      }, {
-        "id" : "2",
-        "tags" : "Element,Container",
-        "name" : "Database"
       } ],
       "documentation" : { }
     } ]
@@ -154,6 +160,21 @@
         "height" : 1973
       },
       "externalSoftwareSystemBoundariesVisible" : true,
+      "relationships" : [ {
+        "id" : "16",
+        "vertices" : [ {
+          "x" : 1375,
+          "y" : 840
+        } ]
+      }, {
+        "id" : "22",
+        "vertices" : [ {
+          "x" : 1380,
+          "y" : 1050
+        } ]
+      }, {
+        "id" : "7"
+      } ],
       "elements" : [ {
         "id" : "2",
         "x" : 2278,
@@ -166,21 +187,6 @@
         "id" : "4",
         "x" : 1528,
         "y" : 799
-      } ],
-      "relationships" : [ {
-        "id" : "14",
-        "vertices" : [ {
-          "x" : 1378,
-          "y" : 799
-        } ]
-      }, {
-        "id" : "7"
-      }, {
-        "id" : "22",
-        "vertices" : [ {
-          "x" : 1378,
-          "y" : 1099
-        } ]
       } ]
     } ],
     "componentViews" : [ {
@@ -193,47 +199,22 @@
       },
       "containerId" : "4",
       "externalContainerBoundariesVisible" : true,
-      "elements" : [ {
-        "id" : "12",
-        "x" : 1065,
-        "y" : 940
-      }, {
-        "id" : "2",
-        "x" : 2755,
-        "y" : 150
-      }, {
-        "id" : "3",
-        "x" : 550,
-        "y" : 1540
-      }, {
-        "id" : "15",
-        "x" : 550,
-        "y" : 490
-      }, {
-        "id" : "5",
-        "x" : 2045,
-        "y" : 155
-      }, {
-        "id" : "8",
-        "x" : 1655,
-        "y" : 675
-      }, {
-        "id" : "19",
-        "x" : 280,
-        "y" : 925
-      }, {
-        "id" : "10",
-        "x" : 1210,
-        "y" : 135
-      } ],
       "relationships" : [ {
-        "id" : "18"
-      }, {
         "id" : "17"
       }, {
-        "id" : "16"
+        "id" : "15",
+        "vertices" : [ {
+          "x" : 1310,
+          "y" : 1250
+        } ]
       }, {
         "id" : "13"
+      }, {
+        "id" : "23",
+        "vertices" : [ {
+          "x" : 1555,
+          "y" : 1505
+        } ]
       }, {
         "id" : "6"
       }, {
@@ -244,6 +225,41 @@
         "id" : "9"
       }, {
         "id" : "20"
+      }, {
+        "id" : "19"
+      } ],
+      "elements" : [ {
+        "id" : "12",
+        "x" : 540,
+        "y" : 155
+      }, {
+        "id" : "2",
+        "x" : 2780,
+        "y" : 1460
+      }, {
+        "id" : "14",
+        "x" : 1470,
+        "y" : 930
+      }, {
+        "id" : "3",
+        "x" : 960,
+        "y" : 1550
+      }, {
+        "id" : "5",
+        "x" : 2715,
+        "y" : 930
+      }, {
+        "id" : "18",
+        "x" : 390,
+        "y" : 910
+      }, {
+        "id" : "8",
+        "x" : 2710,
+        "y" : 405
+      }, {
+        "id" : "10",
+        "x" : 1615,
+        "y" : 350
       } ]
     } ],
     "configuration" : {

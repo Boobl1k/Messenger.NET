@@ -29,7 +29,4 @@ public class MessagesService
 
         return await _messagesRepository.AddMessage(message) ? message : null;
     }
-
-    public async Task Publish(string userName, string text) =>
-        await _publishEndpoint.Publish(new MessageContract(userName, text));
 }
