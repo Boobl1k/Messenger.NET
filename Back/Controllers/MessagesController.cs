@@ -1,3 +1,4 @@
+using Back.RabbitMQ.Producer;
 using Back.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,7 +10,8 @@ public class MessagesController : ControllerBase
 {
     private readonly MessagesService _messagesService;
 
-    public MessagesController(MessagesService messagesService) => _messagesService = messagesService;
+    public MessagesController(MessagesService messagesService, IMessageProducer messagePublisher) =>
+        _messagesService = messagesService;
 
     [HttpGet]
     public async Task<IActionResult> GetLastHundred() => new JsonResult(await _messagesService.GetLast(100));

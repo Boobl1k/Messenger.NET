@@ -2,6 +2,8 @@ using System.Reflection;
 using Back;
 using Back.Hubs;
 using Back.Cucumbers;
+using Back.RabbitMQ.Consumer;
+using Back.RabbitMQ.Producer;
 using Back.Repositories;
 using Back.Services;
 using MassTransit;
@@ -10,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 
-services.AddControllers();
+services.AddControllers().AddNewtonsoftJson();
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
@@ -18,12 +20,11 @@ services.AddDbContext<AppDbContext>();
 
 services.AddScoped<MessagesRepository>();
 services.AddScoped<MessagesService>();
+services.AddSingleton<IMessageConsumer, RabbitMQConsumer>();
+services.AddSingleton<IMessageProducer, RabbitMQProducer>();
 
 // SignalR
-services.AddSignalR(opt =>
-{
-    opt.EnableDetailedErrors = true;
-});
+services.AddSignalR(opt => { opt.EnableDetailedErrors = true; });
 
 services.AddCors(options =>
 {
