@@ -12,6 +12,7 @@ services:
         depends_on:
             - db
         external_links:
+            - rabbit:rabbitmq
             - db:database
         networks:
             default:
@@ -27,6 +28,8 @@ services:
             - './Front/:/app/'
         depends_on:
             - back
+        external_links:
+            - rabbit:rabbitmq
         networks:
             default:
 
@@ -49,13 +52,13 @@ services:
         volumes:
             - './structurizr:/usr/local/structurizr/'
 
-    #rabbit:
-    #    image: rabbitmq:3-management
-    #    ports:
-    #        - 5671:5671
-    #        - 5672:5672
-    #        - 4369:4369
-    #        - 15691:15691
-    #        - 15962:15692
-    #        - 25672:25672
-    #        - 15672:15672
+    rabbit:
+        image: rabbitmq:3-management
+        ports:
+            - 5671:5671
+            - 5672:5672
+            - 4369:4369
+            - 15691:15691
+            - 15962:15692
+            - 25672:25672
+            - 15672:15672
