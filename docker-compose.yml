@@ -11,6 +11,21 @@ services:
             - './Back/:/app/'
         depends_on:
             - db
+            - rabbit
+        external_links:
+            - rabbit:rabbitmq
+            - db:database
+        networks:
+            default:
+
+    messagewriter:
+        build: 
+            context: ./MessageReceiverAndDbWriter
+        volumes:
+            - './MessageReceiverAndDbWriter/:/app/'
+        depends_on:
+            - db
+            - rabbit
         external_links:
             - rabbit:rabbitmq
             - db:database
@@ -28,8 +43,6 @@ services:
             - './Front/:/app/'
         depends_on:
             - back
-        external_links:
-            - rabbit:rabbitmq
         networks:
             default:
 
@@ -62,3 +75,5 @@ services:
             - 15962:15692
             - 25672:25672
             - 15672:15672
+        networks:
+            default:
