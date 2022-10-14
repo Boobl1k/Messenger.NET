@@ -25,7 +25,7 @@ public class MessagesService
     {
         _messagePublisher.SendMessage(message);
 
-        await _publishEndpoint.Publish(message);
+        //await _publishEndpoint.Publish(message);
         return message;
     }
 

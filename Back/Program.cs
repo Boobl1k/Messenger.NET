@@ -20,8 +20,8 @@ services.AddDbContext<AppDbContext>();
 
 services.AddScoped<MessagesRepository>();
 services.AddScoped<MessagesService>();
-services.AddScoped<IMessageConsumer, RabbitMQConsumer>();
-services.AddScoped<IMessageProducer, RabbitMQProducer>();
+services.AddScoped<IMessageConsumer, RabbitMqConsumer>();
+services.AddScoped<IMessageProducer, RabbitMqProducer>();
 
 // SignalR
 services.AddSignalR(opt => { opt.EnableDetailedErrors = true; });

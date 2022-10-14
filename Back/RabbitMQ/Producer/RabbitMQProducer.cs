@@ -5,17 +5,16 @@ using RabbitMQ.Client;
 
 namespace Back.RabbitMQ.Producer;
 
-// ReSharper disable once InconsistentNaming
-public class RabbitMQProducer : IMessageProducer
+public class RabbitMqProducer : IMessageProducer
 {
-    private readonly ILogger<RabbitMQProducer> _logger;
+    private readonly ILogger<RabbitMqProducer> _logger;
 
-    public RabbitMQProducer(ILogger<RabbitMQProducer> logger) =>
+    public RabbitMqProducer(ILogger<RabbitMqProducer> logger) =>
         _logger = logger;
 
     public void SendMessage(Message message)
     {
-        var factory = new ConnectionFactory { HostName = "localhost" };
+        var factory = new ConnectionFactory { HostName = "rabbitmq" };
         var connection = factory.CreateConnection();
         _logger.LogInformation("RabbitMQ: Connection established");
         using var channel = connection.CreateModel();
@@ -28,6 +27,6 @@ public class RabbitMQProducer : IMessageProducer
 
         var json = JsonConvert.SerializeObject(message);
         var body = Encoding.UTF8.GetBytes(json);
-        channel.BasicPublish(exchange: "messages", routingKey: "messages", body: body);
+        channel.BasicPublish(exchange: "", routingKey: "messages", body: body);
     }
 }

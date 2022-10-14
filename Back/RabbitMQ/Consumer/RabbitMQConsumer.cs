@@ -5,12 +5,11 @@ using RabbitMQ.Client.Events;
 
 namespace Back.RabbitMQ.Consumer;
 
-// ReSharper disable once InconsistentNaming
-public class RabbitMQConsumer : IMessageConsumer
+public class RabbitMqConsumer : IMessageConsumer
 {
-    private readonly ILogger<RabbitMQConsumer> _logger;
+    private readonly ILogger<RabbitMqConsumer> _logger;
 
-    public RabbitMQConsumer(ILogger<RabbitMQConsumer> logger) => 
+    public RabbitMqConsumer(ILogger<RabbitMqConsumer> logger) => 
         _logger = logger;
 
     public void ReceiveMessage(Message message)
@@ -33,6 +32,7 @@ public class RabbitMQConsumer : IMessageConsumer
         {
             var body = eventArgs.Body.ToArray();
             var msg = Encoding.UTF8.GetString(body);
+            Console.WriteLine("From rabbit:");
             Console.WriteLine(msg);
         };
         channel.BasicConsume(queue: "messages", autoAck: true, consumer: consumer);
