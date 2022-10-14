@@ -1,8 +1,8 @@
-using Back.Entities;
-using Back.RabbitMQ.Producer;
-using Back.Repositories;
+using Domain;
+using Presentation.RabbitMQ.Producer;
+using Presentation.Repositories;
 
-namespace Back.Services;
+namespace Presentation.Services;
 
 public class MessagesService
 {

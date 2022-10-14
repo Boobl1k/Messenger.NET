@@ -1,8 +1,7 @@
-using Back.Entities;
+using Domain;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 
-namespace Back.Repositories;
+namespace Presentation.Repositories;
 
 public class MessagesRepository
 {

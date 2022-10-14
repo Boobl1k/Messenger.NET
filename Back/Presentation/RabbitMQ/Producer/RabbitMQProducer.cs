@@ -1,9 +1,9 @@
 ﻿using System.Text;
-using Back.Entities;
+using Domain;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 
-namespace Back.RabbitMQ.Producer;
+namespace Presentation.RabbitMQ.Producer;
 
 public class RabbitMqProducer : IMessageProducer
 {

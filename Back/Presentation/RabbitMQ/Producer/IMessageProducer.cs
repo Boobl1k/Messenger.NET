@@ -1,6 +1,6 @@
-﻿using Back.Entities;
+﻿using Domain;
 
-namespace Back.RabbitMQ.Producer;
+namespace Presentation.RabbitMQ.Producer;
 
 public interface IMessageProducer
 {

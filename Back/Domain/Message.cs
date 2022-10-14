@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Back.Entities;
+namespace Domain;
 
 public class Message
 {

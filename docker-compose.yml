@@ -1,14 +1,15 @@
 services:
     back:
         build:
-            context: ./Back
+            context: ./Back/Presentation
         ports:
             - 81:81
             - 5002:5002
         #environment:
         #    - ASPNETCORE_URLS=http://+:5001;https://5002
         volumes:
-            - './Back/:/app/'
+            - './Back/Presentation/:/app/'
+            - './Back/Domain:/Domain/'
         depends_on:
             - db
             - rabbit
@@ -20,9 +21,10 @@ services:
 
     messagewriter:
         build: 
-            context: ./MessageReceiverAndDbWriter
+            context: ./Back/MessageReceiverAndDbWriter
         volumes:
-            - './MessageReceiverAndDbWriter/:/app/'
+            - './Back/MessageReceiverAndDbWriter/:/app/'
+            - './Back/Domain:/Domain/'
         depends_on:
             - db
             - rabbit

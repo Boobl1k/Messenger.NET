@@ -1,8 +1,8 @@
-using Back.RabbitMQ.Producer;
-using Back.Services;
 using Microsoft.AspNetCore.Mvc;
+using Presentation.RabbitMQ.Producer;
+using Presentation.Services;
 
-namespace Back.Controllers;
+namespace Presentation.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

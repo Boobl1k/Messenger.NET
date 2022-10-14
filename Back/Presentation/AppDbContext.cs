@@ -1,7 +1,7 @@
-using Back.Entities;
+using Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace Back;
+namespace Presentation;
 
 public class AppDbContext : DbContext
 {

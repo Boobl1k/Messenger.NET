@@ -1,9 +1,9 @@
-using Back.Entities;
-using Back.Hubs.Clients;
-using Back.Services;
+using Domain;
 using Microsoft.AspNetCore.SignalR;
+using Presentation.Hubs.Clients;
+using Presentation.Services;
 
-namespace Back.Hubs;
+namespace Presentation.Hubs;
 
 public class ChatHub : Hub<IChatClient>
 {

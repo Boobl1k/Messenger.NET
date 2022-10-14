@@ -1,6 +1,6 @@
-using Back.Entities;
+using Domain;
 
-namespace Back.Hubs.Clients;
+namespace Presentation.Hubs.Clients;
 
 public interface IChatClient
 {

@@ -1,9 +1,9 @@
-using Back;
-using Back.Hubs;
-using Back.RabbitMQ.Producer;
-using Back.Repositories;
-using Back.Services;
 using Microsoft.EntityFrameworkCore;
+using Presentation;
+using Presentation.Hubs;
+using Presentation.RabbitMQ.Producer;
+using Presentation.Repositories;
+using Presentation.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
