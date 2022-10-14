@@ -1,6 +1,5 @@
 using Back;
 using Back.Hubs;
-using Back.RabbitMQ.Consumer;
 using Back.RabbitMQ.Producer;
 using Back.Repositories;
 using Back.Services;
@@ -17,7 +16,6 @@ services.AddDbContext<AppDbContext>();
 
 services.AddScoped<MessagesRepository>();
 services.AddScoped<MessagesService>();
-services.AddScoped<IMessageConsumer, RabbitMqConsumer>();
 services.AddScoped<IMessageProducer, RabbitMqProducer>();
 
 // SignalR
