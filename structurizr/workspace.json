@@ -3,10 +3,10 @@
   "name" : "Name",
   "description" : "Description",
   "revision" : 0,
-  "lastModifiedDate" : "2022-10-06T11:38:18Z",
+  "lastModifiedDate" : "2022-10-14T14:09:09Z",
   "lastModifiedAgent" : "structurizr-web/2827/diagram",
   "properties" : {
-    "structurizr.dsl" : "d29ya3NwYWNlIHsKICAgIG1vZGVsIHsKICAgICAgICBzb2Z0d2FyZVN5c3RlbSA9IHNvZnR3YXJlU3lzdGVtICJNZXNzZW5nZXIiIHsKICAgICAgICAgICAgZGF0YWJhc2UgPSBjb250YWluZXIgIkRhdGFiYXNlIiB7CiAgICAgICAgICAgIH0KICAgICAgICAgICAgV0VCID0gY29udGFpbmVyICJXRUIiIHsKICAgICAgICAgICAgfQogICAgICAgICAgICBBUEkgPSBjb250YWluZXIgIkFQSSIgewogICAgICAgICAgICAgICAgdGFncyAic29mdHdhcmUiCiAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgIGRiQ29udGV4dCA9IGNvbXBvbmVudCAiREIgY29udGV4dCIgewogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gZGF0YWJhc2UgIlVzZXMiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBtZXNzYWdlc1JlcG9zaXRvcnkgPSBjb21wb25lbnQgIk1lc3NhZ2VzIHJlcG9zaXRvcnkiIHsKICAgICAgICAgICAgICAgICAgICB0aGlzIC0+IGRiQ29udGV4dCAiQ1JVRCIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIG1hc3NUcmFuc2l0ID0gY29tcG9uZW50ICJNYXNzIHRyYW5zaXQiIHsKICAgICAgICAgICAgICAgICAgICB0aGlzIC0+IG1lc3NhZ2VzUmVwb3NpdG9yeSAiVXNlcyIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIG1lc3NhZ2VzU2VydmljZSA9IGNvbXBvbmVudCAiTWVzc2FnZXMgc2VydmljZSIgewogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gbWVzc2FnZXNSZXBvc2l0b3J5ICJVc2VzIgogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gbWFzc1RyYW5zaXQgIlVzZXMiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBzaWduYWxSID0gY29tcG9uZW50ICJTaWduYWxSIiB7CiAgICAgICAgICAgICAgICAgICAgdGhpcyAtPiBXRUIgIlNlbmRzIgogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gbWVzc2FnZXNTZXJ2aWNlICJVc2VzIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgbWVzc2FnZXNDb250cm9sbGVyID0gY29tcG9uZW50ICJNZXNzYWdlcyBjb250cm9sbGVyIiB7CiAgICAgICAgICAgICAgICAgICAgdGhpcyAtPiBtZXNzYWdlc1NlcnZpY2UgIlVzZXMiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICAgICAgV0VCIC0+IG1lc3NhZ2VzQ29udHJvbGxlciAiVXNlcyIKICAgICAgICAgICAgV0VCIC0+IHNpZ25hbFIgIlNlbmRzIgogICAgICAgIH0KICAgIH0KICAgIHZpZXdzIHsKICAgICAgICBzdHlsZXMgewogICAgICAgICAgIC8qIGVsZW1lbnQgcGF5bWVudCB7CiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICMxMTExMTEKICAgICAgICAgICAgfQogICAgICAgICAgICBlbGVtZW50IHNvZnR3YXJlIHsKICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzU1NTU1NQogICAgICAgICAgICB9Ki8KICAgICAgICB9CiAgICAgICAgLypzeXN0ZW1Db250ZXh0IHNvZnR3YXJlU3lzdGVtIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgfSovCiAgICAgICAgY29udGFpbmVyIHNvZnR3YXJlU3lzdGVtIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgfQogICAgICAgIGNvbXBvbmVudCBBUEkgewogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICB9CiAgICAgICAgdGhlbWUgZGVmYXVsdAogICAgfQp9Cg=="
+    "structurizr.dsl" : "d29ya3NwYWNlIHsKICAgIG1vZGVsIHsKICAgICAgICBzb2Z0d2FyZVN5c3RlbSA9IHNvZnR3YXJlU3lzdGVtICJNZXNzZW5nZXIiIHsKICAgICAgICAgICAgZGF0YWJhc2UgPSBjb250YWluZXIgIkRhdGFiYXNlIiB7CiAgICAgICAgICAgICAgICB0YWdzICJkYXRhYmFzZSIKICAgICAgICAgICAgfQogICAgICAgICAgICByYWJiaXQgPSBjb250YWluZXIgIlJhYmJpdE1RIiB7CiAgICAgICAgICAgICAgICB0YWdzICJyYWJiaXQiCiAgICAgICAgICAgIH0KICAgICAgICAgICAgbWVzc2FnZVdyaXRlciA9IGNvbnRhaW5lciAiTWVzc2FnZSB3cml0ZXIiewogICAgICAgICAgICAgICAgdGhpcyAtPiByYWJiaXQgIkRlcXVldWUiCiAgICAgICAgICAgICAgICB0aGlzIC0+IGRhdGFiYXNlICJXcml0ZXMiCiAgICAgICAgICAgIH0KICAgICAgICAgICAgQVBJID0gY29udGFpbmVyICJBUEkiIHsKICAgICAgICAgICAgICAgIHRhZ3MgImFwaSIKICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgZGJDb250ZXh0ID0gY29tcG9uZW50ICJEQiBjb250ZXh0IiB7CiAgICAgICAgICAgICAgICAgICAgdGhpcyAtPiBkYXRhYmFzZSAiUmVhZHMiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBtZXNzYWdlc1JlcG9zaXRvcnkgPSBjb21wb25lbnQgIk1lc3NhZ2VzIHJlcG9zaXRvcnkiIHsKICAgICAgICAgICAgICAgICAgICB0aGlzIC0+IGRiQ29udGV4dCAiUmVhZHMiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBtZXNzYWdlc1NlcnZpY2UgPSBjb21wb25lbnQgIk1lc3NhZ2VzIHNlcnZpY2UiIHsKICAgICAgICAgICAgICAgICAgICB0aGlzIC0+IG1lc3NhZ2VzUmVwb3NpdG9yeSAiUmVhZHMiCiAgICAgICAgICAgICAgICAgICAgdGhpcyAtPiByYWJiaXQgIlF1ZXVlIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgc2lnbmFsUiA9IGNvbXBvbmVudCAiU2lnbmFsUiIgewogICAgICAgICAgICAgICAgICAgIHRhZ3MgInNpZGUiCiAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgdGhpcyAtPiBtZXNzYWdlc1NlcnZpY2UgIlNlbmRzIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgbWVzc2FnZXNDb250cm9sbGVyID0gY29tcG9uZW50ICJNZXNzYWdlcyBjb250cm9sbGVyIiB7CiAgICAgICAgICAgICAgICAgICAgdGFncyAic2lkZSIKICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICB0aGlzIC0+IG1lc3NhZ2VzU2VydmljZSAiUmVhZHMiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICAgICAgV0VCID0gY29udGFpbmVyICJXRUIiIHsKICAgICAgICAgICAgICAgIHRhZ3MgIndlYiIKICAgICAgICAgICAgCiAgICAgICAgICAgICAgICBzaWduYWxSIC0+IHRoaXMgIlNlbmRzIgogICAgICAgICAgICAgICAgdGhpcyAtPiBtZXNzYWdlc0NvbnRyb2xsZXIgIlVzZXMiCiAgICAgICAgICAgICAgICB0aGlzIC0+IHNpZ25hbFIgIlNlbmRzIgogICAgICAgICAgICB9CiAgICAgICAgfQogICAgfQogICAgdmlld3MgewogICAgICAgIHN0eWxlcyB7CiAgICAgICAgICAgIGVsZW1lbnQgYXBpIHsKICAgICAgICAgICAgICAgIHNoYXBlIGhleGFnb24KICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzU1NTU1NQogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgZGF0YWJhc2UgewogICAgICAgICAgICAgICAgc2hhcGUgY3lsaW5kZXIKICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzMwQUEzMAogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgcmFiYml0IHsKICAgICAgICAgICAgICAgIHNoYXBlIHBpcGUKICAgICAgICAgICAgICAgIGJhY2tncm91bmQgI2NjODUwMAogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgd2ViIHsKICAgICAgICAgICAgICAgIHNoYXBlIHdlYkJyb3dzZXIKICAgICAgICAgICAgfQogICAgICAgICAgICAKICAgICAgICAgICAgZWxlbWVudCBzaWRlIHsKICAgICAgICAgICAgICAgIHNoYXBlIGJveAogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjNzA3MDcwCiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICAgICAgLypzeXN0ZW1Db250ZXh0IHNvZnR3YXJlU3lzdGVtIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgfSovCiAgICAgICAgY29udGFpbmVyIHNvZnR3YXJlU3lzdGVtIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgfQogICAgICAgIGNvbXBvbmVudCBBUEkgewogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICB9CiAgICAgICAgdGhlbWUgZGVmYXVsdAogICAgfQp9Cg=="
   },
   "configuration" : { },
   "model" : {
@@ -16,133 +16,148 @@
       "name" : "Messenger",
       "location" : "Unspecified",
       "containers" : [ {
-        "id" : "3",
-        "tags" : "Element,Container",
+        "id" : "21",
+        "tags" : "Element,Container,web",
         "name" : "WEB",
         "relationships" : [ {
-          "id" : "21",
+          "id" : "24",
           "tags" : "Relationship",
-          "sourceId" : "3",
+          "sourceId" : "21",
           "destinationId" : "19",
           "description" : "Uses"
         }, {
-          "id" : "23",
-          "tags" : "Relationship",
-          "sourceId" : "3",
-          "destinationId" : "15",
-          "description" : "Sends"
-        }, {
-          "id" : "22",
-          "sourceId" : "3",
-          "destinationId" : "4",
+          "id" : "25",
+          "sourceId" : "21",
+          "destinationId" : "7",
           "description" : "Uses",
-          "linkedRelationshipId" : "21"
+          "linkedRelationshipId" : "24"
+        }, {
+          "id" : "26",
+          "tags" : "Relationship",
+          "sourceId" : "21",
+          "destinationId" : "17",
+          "description" : "Sends"
         } ]
       }, {
-        "id" : "4",
-        "tags" : "Element,Container,software",
+        "id" : "7",
+        "tags" : "Element,Container,api",
         "name" : "API",
         "relationships" : [ {
-          "id" : "17",
-          "sourceId" : "4",
-          "destinationId" : "3",
-          "description" : "Sends",
-          "linkedRelationshipId" : "16"
-        }, {
-          "id" : "7",
-          "sourceId" : "4",
+          "id" : "10",
+          "sourceId" : "7",
           "destinationId" : "2",
-          "description" : "Uses",
-          "linkedRelationshipId" : "6"
+          "description" : "Reads",
+          "linkedRelationshipId" : "9"
+        }, {
+          "id" : "16",
+          "sourceId" : "7",
+          "destinationId" : "3",
+          "description" : "Queue",
+          "linkedRelationshipId" : "15"
+        }, {
+          "id" : "23",
+          "sourceId" : "7",
+          "destinationId" : "21",
+          "description" : "Sends",
+          "linkedRelationshipId" : "22"
         } ],
         "components" : [ {
-          "id" : "10",
-          "tags" : "Element,Component",
-          "name" : "Mass transit",
-          "relationships" : [ {
-            "id" : "11",
-            "tags" : "Relationship",
-            "sourceId" : "10",
-            "destinationId" : "8",
-            "description" : "Uses"
-          } ],
-          "size" : 0
-        }, {
-          "id" : "8",
+          "id" : "11",
           "tags" : "Element,Component",
           "name" : "Messages repository",
           "relationships" : [ {
-            "id" : "9",
+            "id" : "12",
             "tags" : "Relationship",
-            "sourceId" : "8",
-            "destinationId" : "5",
-            "description" : "CRUD"
+            "sourceId" : "11",
+            "destinationId" : "8",
+            "description" : "Reads"
           } ],
           "size" : 0
         }, {
-          "id" : "5",
-          "tags" : "Element,Component",
-          "name" : "DB context",
-          "relationships" : [ {
-            "id" : "6",
-            "tags" : "Relationship",
-            "sourceId" : "5",
-            "destinationId" : "2",
-            "description" : "Uses"
-          } ],
-          "size" : 0
-        }, {
-          "id" : "12",
+          "id" : "13",
           "tags" : "Element,Component",
           "name" : "Messages service",
           "relationships" : [ {
             "id" : "14",
             "tags" : "Relationship",
-            "sourceId" : "12",
-            "destinationId" : "10",
-            "description" : "Uses"
+            "sourceId" : "13",
+            "destinationId" : "11",
+            "description" : "Reads"
           }, {
-            "id" : "13",
+            "id" : "15",
             "tags" : "Relationship",
-            "sourceId" : "12",
-            "destinationId" : "8",
-            "description" : "Uses"
+            "sourceId" : "13",
+            "destinationId" : "3",
+            "description" : "Queue"
           } ],
           "size" : 0
         }, {
-          "id" : "15",
+          "id" : "8",
           "tags" : "Element,Component",
+          "name" : "DB context",
+          "relationships" : [ {
+            "id" : "9",
+            "tags" : "Relationship",
+            "sourceId" : "8",
+            "destinationId" : "2",
+            "description" : "Reads"
+          } ],
+          "size" : 0
+        }, {
+          "id" : "17",
+          "tags" : "Element,Component,side",
           "name" : "SignalR",
           "relationships" : [ {
-            "id" : "16",
-            "tags" : "Relationship",
-            "sourceId" : "15",
-            "destinationId" : "3",
-            "description" : "Sends"
-          }, {
             "id" : "18",
             "tags" : "Relationship",
-            "sourceId" : "15",
-            "destinationId" : "12",
-            "description" : "Uses"
+            "sourceId" : "17",
+            "destinationId" : "13",
+            "description" : "Sends"
+          }, {
+            "id" : "22",
+            "tags" : "Relationship",
+            "sourceId" : "17",
+            "destinationId" : "21",
+            "description" : "Sends"
           } ],
           "size" : 0
         }, {
           "id" : "19",
-          "tags" : "Element,Component",
+          "tags" : "Element,Component,side",
           "name" : "Messages controller",
           "relationships" : [ {
             "id" : "20",
             "tags" : "Relationship",
             "sourceId" : "19",
-            "destinationId" : "12",
-            "description" : "Uses"
+            "destinationId" : "13",
+            "description" : "Reads"
           } ],
           "size" : 0
         } ]
       }, {
-        "id" : "2",
+        "id" : "3",
+        "tags" : "Element,Container,rabbit",
+        "name" : "RabbitMQ"
+      }, {
+        "id" : "4",
         "tags" : "Element,Container",
+        "name" : "Message writer",
+        "relationships" : [ {
+          "id" : "5",
+          "tags" : "Relationship",
+          "sourceId" : "4",
+          "destinationId" : "3",
+          "description" : "Dequeue"
+        }, {
+          "id" : "6",
+          "tags" : "Relationship",
+          "sourceId" : "4",
+          "destinationId" : "2",
+          "description" : "Writes"
+        } ]
+      }, {
+        "id" : "2",
+        "tags" : "Element,Container,database",
         "name" : "Database"
       } ],
       "documentation" : { }
@@ -154,117 +169,150 @@
       "softwareSystemId" : "1",
       "key" : "Messenger-Container",
       "order" : 1,
-      "paperSize" : "Slide_16_9",
+      "paperSize" : "A4_Landscape",
       "dimensions" : {
         "width" : 3508,
-        "height" : 1973
+        "height" : 2480
       },
       "externalSoftwareSystemBoundariesVisible" : true,
       "elements" : [ {
         "id" : "2",
-        "x" : 2278,
-        "y" : 799
+        "x" : 1895,
+        "y" : 1710
       }, {
         "id" : "3",
-        "x" : 778,
-        "y" : 799
+        "x" : 825,
+        "y" : 515
       }, {
         "id" : "4",
-        "x" : 1528,
-        "y" : 799
+        "x" : 860,
+        "y" : 1675
+      }, {
+        "id" : "7",
+        "x" : 1355,
+        "y" : 1035
+      }, {
+        "id" : "21",
+        "x" : 1930,
+        "y" : 525
       } ],
       "relationships" : [ {
-        "id" : "17",
+        "id" : "16"
+      }, {
+        "id" : "25",
         "vertices" : [ {
-          "x" : 1375,
-          "y" : 840
+          "x" : 1763,
+          "y" : 844
         } ]
       }, {
-        "id" : "7"
+        "id" : "5"
       }, {
-        "id" : "22",
+        "id" : "23",
         "vertices" : [ {
-          "x" : 1380,
-          "y" : 1050
+          "x" : 1971,
+          "y" : 1060
         } ]
+      }, {
+        "id" : "6"
+      }, {
+        "id" : "10"
       } ]
     } ],
     "componentViews" : [ {
       "key" : "Messenger-API-Component",
       "order" : 2,
-      "paperSize" : "Slide_16_9",
+      "paperSize" : "A4_Landscape",
       "dimensions" : {
         "width" : 3508,
-        "height" : 1973
+        "height" : 2480
       },
-      "containerId" : "4",
+      "containerId" : "7",
       "externalContainerBoundariesVisible" : true,
       "elements" : [ {
-        "id" : "12",
-        "x" : 1105,
-        "y" : 115
+        "id" : "11",
+        "x" : 1845,
+        "y" : 1115
+      }, {
+        "id" : "13",
+        "x" : 1153,
+        "y" : 1123
       }, {
         "id" : "2",
-        "x" : 2735,
-        "y" : 1450
+        "x" : 2690,
+        "y" : 720
       }, {
         "id" : "3",
-        "x" : 960,
-        "y" : 1550
+        "x" : 1150,
+        "y" : 1785
       }, {
-        "id" : "15",
-        "x" : 1425,
-        "y" : 910
-      }, {
-        "id" : "5",
-        "x" : 2715,
-        "y" : 930
-      }, {
-        "id" : "19",
-        "x" : 390,
-        "y" : 910
+        "id" : "17",
+        "x" : 990,
+        "y" : 615
       }, {
         "id" : "8",
-        "x" : 2690,
-        "y" : 535
+        "x" : 1940,
+        "y" : 650
       }, {
-        "id" : "10",
-        "x" : 2140,
-        "y" : 105
+        "id" : "19",
+        "x" : 1735,
+        "y" : 225
+      }, {
+        "id" : "21",
+        "x" : 275,
+        "y" : 165
       } ],
       "relationships" : [ {
         "id" : "18"
       }, {
-        "id" : "16",
+        "id" : "15"
+      }, {
+        "id" : "26",
         "vertices" : [ {
-          "x" : 1310,
-          "y" : 1250
+          "x" : 777,
+          "y" : 666
         } ]
       }, {
         "id" : "14"
       }, {
-        "id" : "13"
+        "id" : "24"
       }, {
-        "id" : "6"
+        "id" : "12"
       }, {
-        "id" : "23",
+        "id" : "22",
         "vertices" : [ {
-          "x" : 1555,
-          "y" : 1505
+          "x" : 937,
+          "y" : 413
         } ]
       }, {
-        "id" : "11"
-      }, {
-        "id" : "21"
+        "id" : "9"
       }, {
         "id" : "20"
-      }, {
-        "id" : "9"
       } ]
     } ],
     "configuration" : {
       "branding" : { },
-      "styles" : { },
+      "styles" : {
+        "elements" : [ {
+          "tag" : "api",
+          "background" : "#555555",
+          "shape" : "Hexagon"
+        }, {
+          "tag" : "database",
+          "background" : "#30aa30",
+          "shape" : "Cylinder"
+        }, {
+          "tag" : "rabbit",
+          "background" : "#cc8500",
+          "shape" : "Pipe"
+        }, {
+          "tag" : "web",
+          "shape" : "WebBrowser"
+        }, {
+          "tag" : "side",
+          "background" : "#707070",
+          "shape" : "Box"
+        } ]
+      },
       "themes" : [ "https://static.structurizr.com/themes/default/theme.json" ],
       "terminology" : { },
       "lastSavedView" : "Messenger-API-Component"

@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Back", "Back\Back.csproj", "{4CE20E4E-80CF-40AC-B167-BDCE8D87406C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageReceiverAndDbWriter", "MessageReceiverAndDbWriter\MessageReceiverAndDbWriter.csproj", "{8A96B6EB-85EC-4639-9D2F-63C877C619BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{4CE20E4E-80CF-40AC-B167-BDCE8D87406C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CE20E4E-80CF-40AC-B167-BDCE8D87406C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CE20E4E-80CF-40AC-B167-BDCE8D87406C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A96B6EB-85EC-4639-9D2F-63C877C619BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A96B6EB-85EC-4639-9D2F-63C877C619BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A96B6EB-85EC-4639-9D2F-63C877C619BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A96B6EB-85EC-4639-9D2F-63C877C619BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

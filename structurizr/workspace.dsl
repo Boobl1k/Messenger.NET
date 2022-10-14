@@ -2,45 +2,70 @@ workspace {
     model {
         softwareSystem = softwareSystem "Messenger" {
             database = container "Database" {
+                tags "database"
             }
-            WEB = container "WEB" {
+            rabbit = container "RabbitMQ" {
+                tags "rabbit"
+            }
+            messageWriter = container "Message writer"{
+                this -> rabbit "Dequeue"
+                this -> database "Writes"
             }
             API = container "API" {
-                tags "software"
+                tags "api"
                 
                 dbContext = component "DB context" {
-                    this -> database "Uses"
+                    this -> database "Reads"
                 }
                 messagesRepository = component "Messages repository" {
-                    this -> dbContext "CRUD"
-                }
-                massTransit = component "Mass transit" {
-                    this -> messagesRepository "Uses"
+                    this -> dbContext "Reads"
                 }
                 messagesService = component "Messages service" {
-                    this -> messagesRepository "Uses"
-                    this -> massTransit "Uses"
+                    this -> messagesRepository "Reads"
+                    this -> rabbit "Queue"
                 }
                 signalR = component "SignalR" {
-                    this -> WEB "Sends"
-                    this -> messagesService "Uses"
+                    tags "side"
+                    
+                    this -> messagesService "Sends"
                 }
                 messagesController = component "Messages controller" {
-                    this -> messagesService "Uses"
+                    tags "side"
+                    
+                    this -> messagesService "Reads"
                 }
             }
-            WEB -> messagesController "Uses"
-            WEB -> signalR "Sends"
+            WEB = container "WEB" {
+                tags "web"
+            
+                signalR -> this "Sends"
+                this -> messagesController "Uses"
+                this -> signalR "Sends"
+            }
         }
     }
     views {
         styles {
-           /* element payment {
-                background #111111
-            }
-            element software {
+            element api {
+                shape hexagon
                 background #555555
-            }*/
+            }
+            element database {
+                shape cylinder
+                background #30AA30
+            }
+            element rabbit {
+                shape pipe
+                background #cc8500
+            }
+            element web {
+                shape webBrowser
+            }
+            
+            element side {
+                shape box
+                background #707070
+            }
         }
         /*systemContext softwareSystem {
             include *

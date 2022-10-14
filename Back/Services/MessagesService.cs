@@ -1,21 +1,18 @@
 using Back.Entities;
 using Back.RabbitMQ.Producer;
 using Back.Repositories;
-using MassTransit;
 
 namespace Back.Services;
 
 public class MessagesService
 {
     private readonly MessagesRepository _messagesRepository;
-    private readonly IPublishEndpoint _publishEndpoint;
     private readonly IMessageProducer _messagePublisher;
 
-    public MessagesService(MessagesRepository messagesRepository, IPublishEndpoint publishEndpoint,
+    public MessagesService(MessagesRepository messagesRepository,
         IMessageProducer messagePublisher)
     {
         _messagesRepository = messagesRepository;
-        _publishEndpoint = publishEndpoint;
         _messagePublisher = messagePublisher;
     }
 
@@ -23,10 +20,7 @@ public class MessagesService
 
     public async Task<Message> AddMessage(Message message)
     {
-        // я хз зачем это сделал. это клиент по сути ахахахахахахаха
         _messagePublisher.SendMessage(message);
-
-        await _publishEndpoint.Publish(message);
         return message;
     }
 
