@@ -23,7 +23,6 @@ public class MessagesService
 
     public async Task<Message> AddMessage(Message message)
     {
-        // я хз зачем это сделал. это клиент по сути ахахахахахахаха
         _messagePublisher.SendMessage(message);
 
         await _publishEndpoint.Publish(message);

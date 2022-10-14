@@ -10,10 +10,8 @@ public class RabbitMQConsumer : IMessageConsumer
 {
     private readonly ILogger<RabbitMQConsumer> _logger;
 
-    public RabbitMQConsumer(ILogger<RabbitMQConsumer> logger)
-    {
+    public RabbitMQConsumer(ILogger<RabbitMQConsumer> logger) => 
         _logger = logger;
-    }
 
     public void ReceiveMessage(Message message)
     {
