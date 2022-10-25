@@ -13,6 +13,7 @@ services:
         depends_on:
             - db
             - rabbit
+            - minio
         external_links:
             - rabbit:rabbitmq
             - db:database
@@ -73,5 +74,17 @@ services:
             - 5671:5671
             - 5672:5672
             - 15672:15672
+        networks:
+            default:
+                
+    minio:
+        image: minio/minio
+        command: server --console-address ":9001" /data/
+        ports:
+            - 9000:9000
+            - 9001:9001
+        environment:
+            MINIO_ROOT_USER: qweqweqwe
+            MINIO_ROOT_PASSWORD: qweqweqwe
         networks:
             default:

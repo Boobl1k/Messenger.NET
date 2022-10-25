@@ -17,6 +17,7 @@ services.AddDbContext<AppDbContext>();
 services.AddScoped<MessagesRepository>();
 services.AddScoped<MessagesService>();
 services.AddScoped<IMessageProducer, RabbitMqProducer>();
+services.AddSingleton<FilesService>();
 
 // SignalR
 services.AddSignalR(opt => { opt.EnableDetailedErrors = true; });
