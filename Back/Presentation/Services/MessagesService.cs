@@ -7,10 +7,10 @@ namespace Presentation.Services;
 public class MessagesService
 {
     private readonly MessagesRepository _messagesRepository;
-    private readonly IMessageProducer _messagePublisher;
+    private readonly MessagesProducer _messagePublisher;
 
     public MessagesService(MessagesRepository messagesRepository,
-        IMessageProducer messagePublisher)
+        MessagesProducer messagePublisher)
     {
         _messagesRepository = messagesRepository;
         _messagePublisher = messagePublisher;
@@ -20,7 +20,7 @@ public class MessagesService
 
     public async Task<Message> AddMessage(Message message)
     {
-        _messagePublisher.SendMessage(message);
+        _messagePublisher.ProduceMessage(message);
         return message;
     }
 

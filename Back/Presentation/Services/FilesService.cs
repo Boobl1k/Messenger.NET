@@ -1,5 +1,8 @@
 using Amazon.S3;
 using Amazon.S3.Model;
+using Domain.File;
+using Presentation.RabbitMQ.Producer;
+using StackExchange.Redis;
 
 namespace Presentation.Services;
 
@@ -8,18 +11,25 @@ public record FileData(Stream Stream, string ContentType, Guid Id);
 public class FilesService
 {
     private const string BucketName = "tempbucket";
-    private readonly AmazonS3Client _client;
 
-    public FilesService()
+    private readonly AmazonS3Client _s3Client;
+    private readonly CacheService _cacheService;
+    private readonly IConnectionMultiplexer _redisConnection;
+    private readonly FileSaveCommandsProducer _fileSaveCommandsProducer;
+
+    public FilesService(AmazonS3Client s3Client, CacheService cacheService, IConnectionMultiplexer redisConnection,
+        FileSaveCommandsProducer fileSaveCommandsProducer)
     {
-        _client = new AmazonS3Client("qweqweqwe", "qweqweqwe",
-            new AmazonS3Config { ServiceURL = "http://minio:9000", ForcePathStyle = true });
+        _s3Client = s3Client;
+        _cacheService = cacheService;
+        _redisConnection = redisConnection;
+        _fileSaveCommandsProducer = fileSaveCommandsProducer;
     }
 
     public async Task<Guid> SaveFileAsync(Stream stream, string contentType, Guid id)
     {
-        if (!(await _client.ListBucketsAsync()).Buckets.Exists(b => b.BucketName == BucketName))
-            await _client.PutBucketAsync(BucketName);
+        if (!(await _s3Client.ListBucketsAsync()).Buckets.Exists(b => b.BucketName == BucketName))
+            await _s3Client.PutBucketAsync(BucketName);
 
         var request = new PutObjectRequest
         {
@@ -30,7 +40,8 @@ public class FilesService
             ContentType = contentType
         };
 
-        await _client.PutObjectAsync(request);
+        await _s3Client.PutObjectAsync(request);
+        await HandleFileMoving(id);
 
         return id;
     }
@@ -42,12 +53,25 @@ public class FilesService
             Key = fileId.ToString(),
             BucketName = BucketName
         };
-        var response = await _client.GetObjectAsync(request);
+        var response = await _s3Client.GetObjectAsync(request);
 
         return new FileData(
             response.ResponseStream,
             response.Headers.ContentType,
             fileId
         );
+    }
+
+    public async Task SaveFileMetaAsync(IFileMeta meta)
+    {
+        await _cacheService.SetValueAsync(meta.Id, meta);
+        await HandleFileMoving(meta.Id);
+    }
+
+    private async Task HandleFileMoving(Guid id)
+    {
+        if (await _redisConnection.GetDatabase().StringIncrementAsync(
+                BitConverter.ToInt32(id.ToByteArray(), 0).ToString()) > 1)
+            _fileSaveCommandsProducer.ProduceFileSaveCommand(id);
     }
 }

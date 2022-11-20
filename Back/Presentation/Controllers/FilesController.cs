@@ -29,7 +29,7 @@ public class FilesController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> PostFile([FromForm] IFormFile file, Guid id)
+    public async Task<IActionResult> PostFile([FromForm] IFormFile file, [FromQuery] Guid id)
     {
         try
         {

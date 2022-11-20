@@ -10,17 +10,22 @@ namespace Presentation.Controllers;
 public class FileMetadataController : ControllerBase
 {
     private readonly CacheService _cacheService;
+    private readonly FilesService _filesService;
 
-    public FileMetadataController(CacheService cacheService) => _cacheService = cacheService;
-
+    public FileMetadataController(CacheService cacheService, FilesService filesService)
+    {
+        _cacheService = cacheService;
+        _filesService = filesService;
+    }
 
     private const string SoundEndpoint = "Sound";
+
     [HttpPost(SoundEndpoint)]
     public async Task<IActionResult> PostAudioFileMetadata([FromForm] SoundFileMetaDto meta)
     {
         try
         {
-            await _cacheService.SetValueAsync(meta.Id, new SoundFileMeta(meta.Id, meta.Name, meta.Album, meta.Author));
+            await _filesService.SaveFileMetaAsync(new SoundFileMeta(meta.Id, meta.Name, meta.Album, meta.Author));
             return Ok();
         }
         catch (Exception e)

@@ -5,14 +5,14 @@ using RabbitMQ.Client;
 
 namespace Presentation.RabbitMQ.Producer;
 
-public class RabbitMqProducer : IMessageProducer
+public class MessagesProducer
 {
-    private readonly ILogger<RabbitMqProducer> _logger;
+    private readonly ILogger<MessagesProducer> _logger;
 
-    public RabbitMqProducer(ILogger<RabbitMqProducer> logger) =>
+    public MessagesProducer(ILogger<MessagesProducer> logger) =>
         _logger = logger;
 
-    public void SendMessage(Message message)
+    public void ProduceMessage(Message message)
     {
         var factory = new ConnectionFactory { HostName = "rabbitmq" };
         var connection = factory.CreateConnection();

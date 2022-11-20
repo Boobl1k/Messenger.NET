@@ -1,3 +1,4 @@
+using Amazon.S3;
 using Microsoft.EntityFrameworkCore;
 using Presentation;
 using Presentation.Hubs;
@@ -17,7 +18,10 @@ services.AddDbContext<AppDbContext>();
 
 services.AddScoped<MessagesRepository>();
 services.AddScoped<MessagesService>();
-services.AddScoped<IMessageProducer, RabbitMqProducer>();
+services.AddSingleton<MessagesProducer>();
+services.AddSingleton<FileSaveCommandsProducer>();
+services.AddSingleton<AmazonS3Client>(new AmazonS3Client("qweqweqwe", "qweqweqwe",
+    new AmazonS3Config { ServiceURL = "http://minio:9000", ForcePathStyle = true }));
 services.AddSingleton<FilesService>();
 services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect("cache"));
 services.AddSingleton<CacheService>();
