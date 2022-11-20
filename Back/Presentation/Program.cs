@@ -44,19 +44,6 @@ await using (var scope = app.Services.CreateAsyncScope())
 if (app.Environment.IsDevelopment())
     app.UseSwagger().UseSwaggerUI();
 
-app.Use(async (context, next) =>
-{
-    Console.WriteLine(context.Request.Path);
-
-    if (context.Request.Path == "/")
-    {
-        context.Response.StatusCode = 200;
-        await context.Response.WriteAsync("Hello");
-    }
-    else
-        await next();
-});
-
 app
     // .UseHttpsRedirection()
     .UseAuthentication()
