@@ -3,27 +3,28 @@ using RabbitMQ.Client;
 
 namespace Presentation.RabbitMQ.Producer;
 
-public class FileSaveCommandsProducer
+public class FileSaveCommandsProducer : IDisposable
 {
-    private readonly ILogger<FileSaveCommandsProducer> _logger;
+    private readonly IModel _channel;
 
-    public FileSaveCommandsProducer(ILogger<FileSaveCommandsProducer> logger) =>
-        _logger = logger;
-    
-    public void ProduceFileSaveCommand(Guid fileId)
+    public FileSaveCommandsProducer()
     {
         var factory = new ConnectionFactory { HostName = "rabbitmq" };
         var connection = factory.CreateConnection();
-        _logger.LogInformation("RabbitMQ: Connection established");
-        using var channel = connection.CreateModel();
+        _channel = connection.CreateModel();
+    }
 
-        channel.QueueDeclare(queue: "fileMetas",
+    public void ProduceFileSaveCommand(Guid fileId)
+    {
+        _channel.QueueDeclare(queue: "fileMetas",
             durable: true,
             exclusive: false,
             autoDelete: false,
             arguments: null);
 
         var body = Encoding.UTF8.GetBytes(fileId.ToString());
-        channel.BasicPublish(exchange: "", routingKey: "fileMetas", body: body);
+        _channel.BasicPublish(exchange: "", routingKey: "fileMetas", body: body);
     }
+
+    public void Dispose() => _channel.Dispose();
 }
