@@ -5,21 +5,20 @@ using RabbitMQ.Client;
 
 namespace Presentation.RabbitMQ.Producer;
 
-public class RabbitMqProducer : IMessageProducer
+public class MessagesProducer : IDisposable
 {
-    private readonly ILogger<RabbitMqProducer> _logger;
+    private readonly IModel _channel;
 
-    public RabbitMqProducer(ILogger<RabbitMqProducer> logger) =>
-        _logger = logger;
-
-    public void SendMessage(Message message)
+    public MessagesProducer()
     {
         var factory = new ConnectionFactory { HostName = "rabbitmq" };
         var connection = factory.CreateConnection();
-        _logger.LogInformation("RabbitMQ: Connection established");
-        using var channel = connection.CreateModel();
+        _channel = connection.CreateModel();
+    }
 
-        channel.QueueDeclare(queue: "messages",
+    public void ProduceMessage(Message message)
+    {
+        _channel.QueueDeclare(queue: "messages",
             durable: true,
             exclusive: false,
             autoDelete: false,
@@ -27,6 +26,8 @@ public class RabbitMqProducer : IMessageProducer
 
         var json = JsonConvert.SerializeObject(message);
         var body = Encoding.UTF8.GetBytes(json);
-        channel.BasicPublish(exchange: "", routingKey: "messages", body: body);
+        _channel.BasicPublish(exchange: "", routingKey: "messages", body: body);
     }
+
+    public void Dispose() => _channel.Dispose();
 }

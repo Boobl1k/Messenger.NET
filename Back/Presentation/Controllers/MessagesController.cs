@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Presentation.RabbitMQ.Producer;
 using Presentation.Services;
 
 namespace Presentation.Controllers;
@@ -10,8 +9,7 @@ public class MessagesController : ControllerBase
 {
     private readonly MessagesService _messagesService;
 
-    public MessagesController(MessagesService messagesService, IMessageProducer messagePublisher) =>
-        _messagesService = messagesService;
+    public MessagesController(MessagesService messagesService) => _messagesService = messagesService;
 
     [HttpGet]
     public async Task<IActionResult> GetLastHundred() => new JsonResult(await _messagesService.GetLast(100));

@@ -1,9 +1,11 @@
+using Amazon.S3;
 using Microsoft.EntityFrameworkCore;
 using Presentation;
 using Presentation.Hubs;
 using Presentation.RabbitMQ.Producer;
 using Presentation.Repositories;
 using Presentation.Services;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -16,8 +18,13 @@ services.AddDbContext<AppDbContext>();
 
 services.AddScoped<MessagesRepository>();
 services.AddScoped<MessagesService>();
-services.AddScoped<IMessageProducer, RabbitMqProducer>();
+services.AddSingleton<MessagesProducer>();
+services.AddSingleton<FileSaveCommandsProducer>();
+services.AddSingleton<AmazonS3Client>(new AmazonS3Client("qweqweqwe", "qweqweqwe",
+    new AmazonS3Config { ServiceURL = "http://minio:9000", ForcePathStyle = true }));
 services.AddSingleton<FilesService>();
+services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect("cache"));
+services.AddSingleton<CacheService>();
 
 // SignalR
 services.AddSignalR(opt => { opt.EnableDetailedErrors = true; });
@@ -43,19 +50,6 @@ await using (var scope = app.Services.CreateAsyncScope())
 
 if (app.Environment.IsDevelopment())
     app.UseSwagger().UseSwaggerUI();
-
-app.Use(async (context, next) =>
-{
-    Console.WriteLine(context.Request.Path);
-
-    if (context.Request.Path == "/")
-    {
-        context.Response.StatusCode = 200;
-        await context.Response.WriteAsync("Hello");
-    }
-    else
-        await next();
-});
 
 app
     // .UseHttpsRedirection()

@@ -19,9 +19,9 @@ public class FilesController : ControllerBase
         try
         {
             var file = await _filesService.ReadFileAsync(id);
-            return File(file.Stream, file.ContentType, file.Name);
+            return File(file.Stream, file.ContentType, file.Id.ToString());
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             Console.WriteLine(e);
             return NotFound();
@@ -29,14 +29,13 @@ public class FilesController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> PostFile([FromForm]IFormFile file)
+    public async Task<IActionResult> PostFile([FromForm] IFormFile file, [FromQuery] Guid id)
     {
         try
         {
-            return Ok(new
-                { id = await _filesService.SaveFileAsync(file.OpenReadStream(), file.Name, file.ContentType) });
+            return Ok(await _filesService.SaveFileAsync(file.OpenReadStream(), file.ContentType, id));
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             Console.WriteLine(e);
             return BadRequest();
