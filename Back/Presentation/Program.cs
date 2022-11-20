@@ -4,6 +4,7 @@ using Presentation.Hubs;
 using Presentation.RabbitMQ.Producer;
 using Presentation.Repositories;
 using Presentation.Services;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -18,6 +19,8 @@ services.AddScoped<MessagesRepository>();
 services.AddScoped<MessagesService>();
 services.AddScoped<IMessageProducer, RabbitMqProducer>();
 services.AddSingleton<FilesService>();
+services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect("cache"));
+services.AddSingleton<CacheService>();
 
 // SignalR
 services.AddSignalR(opt => { opt.EnableDetailedErrors = true; });
