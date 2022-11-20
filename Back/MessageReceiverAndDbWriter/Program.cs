@@ -36,9 +36,9 @@ for (;;)
             context.SaveChanges();
             channel.BasicAck(ea.DeliveryTag, false);
         };
+        channel.BasicConsume("messages", false, consumer);
         for (;;)
         {
-            channel.BasicConsume("messages", false, consumer);
         }
     }
     catch (Exception e)
