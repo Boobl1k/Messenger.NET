@@ -49,6 +49,6 @@ for (;;)
     {
         Console.WriteLine("Closing connection");
         connection?.Close();
-        await Task.Delay(100);
+        await Task.Delay(1000);
     }
 }
