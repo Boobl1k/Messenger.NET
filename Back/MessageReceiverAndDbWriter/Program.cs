@@ -4,6 +4,7 @@ using Amazon.S3;
 using Domain;
 using Domain.File;
 using MessageReceiverAndDbWriter;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
@@ -21,9 +22,9 @@ for (;;)
         new AmazonS3Config { ServiceURL = "http://minio:9000", ForcePathStyle = true });
 
     IConnectionMultiplexer redisConnection = ConnectionMultiplexer.Connect("cache");
-    
+
     var mongoClient = new MongoClient("mongodb://meta:27017");
-    
+
     try
     {
         var factory = new ConnectionFactory { HostName = "rabbitmq" };
@@ -85,9 +86,32 @@ for (;;)
                     var data = db.StringGet(fileId);
                     if (!data.HasValue) throw new Exception();
                     Console.WriteLine(data);
-                    var meta = JsonSerializer.Deserialize<SoundFileMeta>(data!) ?? throw new Exception();
+                    try
+                    {
+                        var meta = JsonSerializer.Deserialize<SoundFileMeta>(data!) ?? throw new Exception();
+                        if (meta is not { Album: { }, Author: { } })
+                            throw new Exception();
+                        mongoClient.GetDatabase("files").GetCollection<SoundFileMeta>("sound")
+                            .InsertOne(meta);
+                    }
+                    catch
+                    {
+                        try
+                        {
+                            var meta = JsonSerializer.Deserialize<VideoFileMeta>(data!) ?? throw new Exception();
+                            if (meta is not { Producer: { }, Studio: { } })
+                                throw new Exception();
+                            mongoClient.GetDatabase("files").GetCollection<VideoFileMeta>("video")
+                                .InsertOne(meta);
+                        }
+                        catch
+                        {
+                            var meta = JsonSerializer.Deserialize<TextFileMeta>(data!) ?? throw new Exception();
+                            mongoClient.GetDatabase("files").GetCollection<TextFileMeta>("text")
+                                .InsertOne(meta);
+                        }
+                    }
 
-                    mongoClient.GetDatabase("files").GetCollection<SoundFileMeta>("sound").InsertOne(meta);
 
                     channel.BasicAck(ea.DeliveryTag, false);
                 }
