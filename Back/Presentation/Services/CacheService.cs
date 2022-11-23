@@ -20,7 +20,7 @@ public class CacheService
     public async Task SetValueAsync<T>(string id, T value) where T : class
     {
         var db = _connection.GetDatabase();
-        await db.StringSetAsync(id, JsonSerializer.Serialize(value));
+        await db.StringSetAsync(id, JsonSerializer.Serialize((dynamic)value));
     }
 
     public async Task<T> GetValueAsync<T>(Guid id) where T : class => await this.GetValueAsync<T>(id.ToString());

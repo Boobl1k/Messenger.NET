@@ -20,7 +20,6 @@ services:
             - rabbit:rabbitmq
             - db:database
             - redis:cache
-            - mongo:meta
         networks:
             default:
 
@@ -33,9 +32,14 @@ services:
         depends_on:
             - db
             - rabbit
+            - redis
+            - mongo
+            - minio
         external_links:
             - rabbit:rabbitmq
             - db:database
+            - redis:cache
+            - mongo:meta
         networks:
             default:
 
@@ -97,10 +101,6 @@ services:
         image: mongo
         ports:
             - 27017:27017
-        environment:
-            - MONGO_INITDB_ROOT_USERNAME=qwe
-            - MONGO_INITDB_ROOT_PASSWORD=qwe
-            - MONGO_INITDB_DATABASE=files
     
     redis:
         image: redis
