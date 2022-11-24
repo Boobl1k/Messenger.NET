@@ -9,5 +9,5 @@ public record SoundFileMetaDto([Required] Guid Id, [Required] string Name, [Requ
 public record TextFileMetaDto([Required] Guid Id, [Required] string Name);
 
 public record VideoFileMetaDto([Required] Guid Id, [Required] string Name,
-    [Required] VideoFileMeta.VideoFileExtension Extension,
+    [Required][RegularExpression(@"mp4|mov|avi")] string Extension,
     [Required] string Studio, [Required] string Producer);

@@ -6,7 +6,7 @@ using Presentation.Services;
 namespace Presentation.Controllers;
 
 [ApiController]
-[Route("api/[controller]/[action]")]
+[Route("api/[controller]")]
 public class FileMetadataController : ControllerBase
 {
     private readonly CacheService _cacheService;
@@ -25,7 +25,7 @@ public class FileMetadataController : ControllerBase
     #region sound
 
     [HttpPost(SoundEndpoint)]
-    public async Task<IActionResult> PostAudioFileMetadata([FromForm] SoundFileMetaDto meta)
+    public async Task<IActionResult> PostAudioFileMetadata([FromBody] SoundFileMetaDto meta)
     {
         try
         {
@@ -58,7 +58,7 @@ public class FileMetadataController : ControllerBase
     #region text
 
     [HttpPost(TextEndpoint)]
-    public async Task<IActionResult> PostTextFileMetadata([FromForm] TextFileMetaDto meta)
+    public async Task<IActionResult> PostTextFileMetadata([FromBody] TextFileMetaDto meta)
     {
         try
         {
@@ -91,11 +91,12 @@ public class FileMetadataController : ControllerBase
     #region video
 
     [HttpPost(VideoEndpoint)]
-    public async Task<IActionResult> PostVideoFileMetadata([FromForm] VideoFileMetaDto meta)
+    public async Task<IActionResult> PostVideoFileMetadata([FromBody] VideoFileMetaDto meta)
     {
         try
         {
-            await _filesService.SaveFileMetaAsync(new VideoFileMeta(meta.Id, meta.Name, meta.Extension, meta.Studio, meta.Producer));
+            await _filesService.SaveFileMetaAsync(new VideoFileMeta(meta.Id, meta.Name, meta.Extension, meta.Studio,
+                meta.Producer));
             return Ok();
         }
         catch (Exception e)
