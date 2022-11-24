@@ -9,7 +9,7 @@ public class CacheService
 
     public CacheService(IConnectionMultiplexer connection) => _connection = connection;
 
-    public async Task<T> GetValueAsync<T>(string id) where T : class
+    private async Task<T> GetValueAsync<T>(string id) where T : class
     {
         var db = _connection.GetDatabase();
         var data = await db.StringGetAsync(id);
@@ -17,7 +17,7 @@ public class CacheService
         return JsonSerializer.Deserialize<T>(data!) ?? throw new Exception();
     }
 
-    public async Task SetValueAsync<T>(string id, T value) where T : class
+    private async Task SetValueAsync<T>(string id, T value) where T : class
     {
         var db = _connection.GetDatabase();
         await db.StringSetAsync(id, JsonSerializer.Serialize((dynamic)value));
