@@ -31,20 +31,18 @@ export default function FileUploader() {
         setFileType(event.target.value as FileType);
     }
 
-    const sendFile = async (id: string) => {
+    const sendFile = async (id: string, file: File) => {
         const formData = new FormData();
 
-        if (file) {
-            formData.append('file', file);
+        formData.append('file', file);
 
-            await axios.post(`${BASE_URL}api/files/?id=${id}`, formData)
-                .then((event) => {
-                    console.log("success");
-                })
-                .catch((e) => {
-                    console.error('Error', e);
-                });
-        }
+        await axios.post(`${BASE_URL}api/files/?id=${id}`, formData)
+            .then(() => {
+                console.log("success");
+            })
+            .catch((e) => {
+                console.error('Error', e);
+            });
     }
 
     const sendMeta = async (id: string) => {
@@ -74,58 +72,35 @@ export default function FileUploader() {
     const onSubmit = async (event: any) => {
         event.preventDefault();
 
-        const id = uuidv4();
+        if (file) {
+            const id = uuidv4();
 
-        await sendFile(id);
-        await sendMeta(id);
+            await sendFile(id, file);
+            await sendMeta(id);
+        } else alert('attach your file');
     };
 
     const generateMetaEditor = (type: FileType) => {
+        function generateInput<T>(key: keyof T & string, setter: (a: (value: T) => T) => void, value: T) {
+            const onSet = (key: keyof T) =>
+                (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
+                    setter((oldMeta) => ({
+                        ...oldMeta,
+                        [key]: e.target.value
+                    }));
+            return [
+                <label>{key[0].toUpperCase() + key.slice(1)}</label>,
+                <input value={value[key] as string}
+                       onChange={onSet(key)}
+                       className="form-control"/>];
+        }
+
         switch (type) {
             case FileType.sound:
-                const onSetSoundFileMeta = (key: keyof SoundFileMeta) =>
-                    (e: React.ChangeEvent<HTMLInputElement>) =>
-                        setSoundFileMeta((oldMeta) => ({
-                            ...oldMeta,
-                            [key]: e.target.value
-                        }));
-                return (
-                    <>
-                        <label>Name:</label>
-                        <input
-                            value={soundFileMeta.name}
-                            onChange={onSetSoundFileMeta('name')}
-                            className="form-control"/>
-                        <label>Author:</label>
-                        <input
-                            value={soundFileMeta.author}
-                            onChange={onSetSoundFileMeta('author')}
-                            className="form-control"
-                        />
-                        <label>Album:</label>
-                        <input
-                            value={soundFileMeta.album}
-                            onChange={onSetSoundFileMeta('album')}
-                            className="form-control"
-                        />
-                    </>
-                );
+                const soundKeys: (keyof SoundFileMeta)[] = ['name', 'author', 'album'];
+                return soundKeys.map(key => generateInput<SoundFileMeta>(key, setSoundFileMeta, soundFileMeta));
             case FileType.text:
-                const onSetTextFileMeta = (key: keyof TextFileMeta) =>
-                    (e: React.ChangeEvent<HTMLInputElement>) =>
-                        setTextFileMeta((oldMeta) => ({
-                            ...oldMeta,
-                            [key]: e.target.value
-                        }));
-                return (
-                    <>
-                        <label>Name:</label>
-                        <input
-                            value={textFileMeta.name}
-                            onChange={onSetTextFileMeta('name')}
-                            className="form-control"/>
-                    </>
-                );
+                return generateInput<TextFileMeta>('name', setTextFileMeta, textFileMeta);
             case FileType.video:
                 const onSetVideoFileMeta = (key: keyof VideoFileMeta) =>
                     (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
@@ -133,25 +108,10 @@ export default function FileUploader() {
                             ...oldMeta,
                             [key]: e.target.value
                         }));
+                const videoKeys: (keyof VideoFileMeta)[] = ['name', 'studio', 'producer'];
                 return (
                     <>
-                        <label>Name:</label>
-                        <input
-                            value={videoFileMeta.name}
-                            onChange={onSetVideoFileMeta('name')}
-                            className="form-control"/>
-                        <label>Studio:</label>
-                        <input
-                            value={videoFileMeta.studio}
-                            onChange={onSetVideoFileMeta('studio')}
-                            className="form-control"
-                        />
-                        <label>Producer:</label>
-                        <input
-                            value={videoFileMeta.producer}
-                            onChange={onSetVideoFileMeta('producer')}
-                            className="form-control"
-                        />
+                        {videoKeys.map(key => generateInput<VideoFileMeta>(key, setVideoFileMeta, videoFileMeta))}
                         <label>Extension:</label>
                         <select
                             value={VideoFileExtension.Mp4}
