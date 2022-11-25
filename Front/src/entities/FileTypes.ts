@@ -1,12 +1,10 @@
 export interface SoundFileMeta {
-    id: string;
     name: string;
     author: string;
     album: string;
 }
 
 export interface TextFileMeta {
-    id: string;
     name: string;
 }
 
@@ -17,7 +15,6 @@ export enum VideoFileExtension {
 }
 
 export interface VideoFileMeta {
-    id: string;
     name: string;
     extension: VideoFileExtension;
     studio: string;

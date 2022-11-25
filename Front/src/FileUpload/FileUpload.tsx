@@ -9,14 +9,12 @@ export default function FileUploader() {
     const [file, setFile] = useState<null | File>(null);
     const [fileType, setFileType] = useState<FileType>(FileType.text);
     const [soundFileMeta, setSoundFileMeta] = useState<SoundFileMeta>({
-        id: '',
         album: 'album',
         author: 'author',
         name: 'name'
     });
-    const [textFileMeta, setTextFileMeta] = useState<TextFileMeta>({id: '', name: 'name'});
+    const [textFileMeta, setTextFileMeta] = useState<TextFileMeta>({name: 'name'});
     const [videoFileMeta, setVideoFileMeta] = useState<VideoFileMeta>({
-        id: '',
         studio: 'studio',
         producer: 'producer',
         extension: VideoFileExtension.Mp4,
