@@ -1,7 +1,6 @@
-﻿import axios from "axios";
+﻿import axios from "../axios";
 import './fileUpload.css'
 import React, {useState} from "react";
-import {BASE_URL} from "../config";
 import {v4 as uuidv4} from 'uuid';
 import {FileType, SoundFileMeta, TextFileMeta, VideoFileExtension, VideoFileMeta} from "../entities/FileTypes";
 
@@ -34,7 +33,7 @@ export default function FileUploader() {
 
         formData.append('file', file);
 
-        await axios.post(`${BASE_URL}api/files/?id=${id}`, formData)
+        await axios.post(`files/?id=${id}`, formData)
             .then(() => {
                 console.log("success");
             })
@@ -57,7 +56,7 @@ export default function FileUploader() {
                 break;
         }
 
-        await axios.post(`${BASE_URL}api/FileMetadata/${fileType}/`, {...meta, id})
+        await axios.post(`fileMetadata/${fileType}/`, {...meta, id})
             .then(() => {
                 console.log("success");
             })
