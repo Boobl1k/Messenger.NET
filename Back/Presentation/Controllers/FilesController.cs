@@ -12,22 +12,6 @@ public class FilesController : ControllerBase
     public FilesController(FilesService filesService) =>
         _filesService = filesService;
 
-    [HttpGet]
-    public async Task<IActionResult> GetFile(Guid id)
-    {
-        Console.WriteLine(id);
-        try
-        {
-            var file = await _filesService.ReadFileAsync(id);
-            return File(file.Stream, file.ContentType, file.Id.ToString());
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            return NotFound();
-        }
-    }
-
     [HttpPost]
     public async Task<IActionResult> PostFile([FromForm] IFormFile file, [FromQuery] Guid id)
     {
