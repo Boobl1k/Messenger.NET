@@ -50,6 +50,7 @@ services:
             - 80:80
         environment:
             - PORT=80
+            - WATCHPACK_POLLING=true
         volumes:
             - './Front/:/app/'
         depends_on:
