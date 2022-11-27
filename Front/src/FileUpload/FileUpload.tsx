@@ -33,7 +33,7 @@ export default function FileUploader() {
 
         formData.append('file', file);
 
-        await axios.post(`files/?id=${id}`, formData)
+        await axios.post(`files/${id}`, formData)
             .then(() => {
                 console.log("success");
             })

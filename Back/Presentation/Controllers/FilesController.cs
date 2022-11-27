@@ -4,7 +4,7 @@ using Presentation.Services;
 namespace Presentation.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/[controller]/{id:guid?}")]
 public class FilesController : ControllerBase
 {
     private readonly FilesService _filesService;
@@ -13,7 +13,7 @@ public class FilesController : ControllerBase
         _filesService = filesService;
 
     [HttpPost]
-    public async Task<IActionResult> PostFile([FromForm] IFormFile file, [FromQuery] Guid id)
+    public async Task<IActionResult> PostFile([FromForm] IFormFile file, [FromRoute] Guid id)
     {
         try
         {
