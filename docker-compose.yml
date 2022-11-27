@@ -22,12 +22,15 @@ services:
             - redis:cache
         networks:
             default:
-
-    messagewriter:
-        build: 
-            context: ./Back/MessageReceiverAndDbWriter
+                
+    bushandler:
+        build:
+            context: ./Back/EventBusHandler
+        ports:
+            - 82:82
+            - 5003:5003
         volumes:
-            - './Back/MessageReceiverAndDbWriter/:/app/'
+            - './Back/EventBusHandler/:/app/'
             - './Back/Domain:/Domain/'
         depends_on:
             - db
