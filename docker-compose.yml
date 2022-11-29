@@ -4,9 +4,6 @@ services:
             context: ./Back/Presentation
         ports:
             - 81:81
-            - 5002:5002
-        #environment:
-        #    - ASPNETCORE_URLS=http://+:5001;https://5002
         volumes:
             - './Back/Presentation/:/app/'
             - './Back/Domain:/Domain/'
@@ -16,36 +13,23 @@ services:
             - minio
             - mongo
             - redis
-        external_links:
-            - rabbit:rabbitmq
-            - db:database
-            - redis:cache
         networks:
             default:
-                
+    
     bushandler:
         build:
             context: ./Back/EventBusHandler
-        ports:
-            - 82:82
-            - 5003:5003
         volumes:
             - './Back/EventBusHandler/:/app/'
             - './Back/Domain:/Domain/'
         depends_on:
             - db
             - rabbit
-            - redis
             - mongo
             - minio
-        external_links:
-            - rabbit:rabbitmq
-            - db:database
-            - redis:cache
-            - mongo:meta
         networks:
             default:
-
+    
     front:
         build:
             context: ./Front
@@ -60,7 +44,7 @@ services:
             - back
         networks:
             default:
-
+    
     db:
         image: postgres:14.5
         environment:
@@ -72,14 +56,14 @@ services:
             - 5432:5432
         networks:
             default:
-
+    
     structurizr:
         image: structurizr/lite
         ports:
             - 8001:8080
         volumes:
             - './structurizr:/usr/local/structurizr/'
-
+    
     rabbit:
         image: rabbitmq:3-management
         ports:
@@ -88,7 +72,7 @@ services:
             - 15672:15672
         networks:
             default:
-                
+    
     minio:
         image: minio/minio
         command: server --console-address ":9001" /data/
@@ -100,7 +84,7 @@ services:
             MINIO_ROOT_PASSWORD: qweqweqwe
         networks:
             default:
-                
+    
     mongo:
         image: mongo
         ports:

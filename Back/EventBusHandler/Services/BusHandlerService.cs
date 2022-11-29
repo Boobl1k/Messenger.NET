@@ -61,7 +61,7 @@ public class BusHandlerService : BackgroundService
 
     private async Task RemakeAsync()
     {
-        IConnectionMultiplexer redisConnection = await ConnectionMultiplexer.ConnectAsync("cache");
+        IConnectionMultiplexer redisConnection = await ConnectionMultiplexer.ConnectAsync("redis");
 
         var mongoClient = new MongoClient(_mongoOptions.ConnectionString);
         try

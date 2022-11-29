@@ -9,7 +9,7 @@ public class FileSaveCommandsProducer : IDisposable
 
     public FileSaveCommandsProducer()
     {
-        var factory = new ConnectionFactory { HostName = "rabbitmq" };
+        var factory = new ConnectionFactory { HostName = "rabbit" };
         var connection = factory.CreateConnection();
         _channel = connection.CreateModel();
     }

@@ -23,7 +23,7 @@ services.AddSingleton<FileSaveCommandsProducer>();
 services.AddSingleton<AmazonS3Client>(new AmazonS3Client("qweqweqwe", "qweqweqwe",
     new AmazonS3Config { ServiceURL = "http://minio:9000", ForcePathStyle = true }));
 services.AddSingleton<FilesService>();
-services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect("cache"));
+services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect("redis"));
 services.AddSingleton<CacheService>();
 
 // SignalR

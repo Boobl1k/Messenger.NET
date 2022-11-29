@@ -11,7 +11,7 @@ public class MessagesProducer : IDisposable
 
     public MessagesProducer()
     {
-        var factory = new ConnectionFactory { HostName = "rabbitmq" };
+        var factory = new ConnectionFactory { HostName = "rabbit" };
         var connection = factory.CreateConnection();
         _channel = connection.CreateModel();
     }
