@@ -7,10 +7,14 @@ namespace Presentation.Controllers;
 [Route("api/[controller]/{id:guid?}")]
 public class FilesController : ControllerBase
 {
+    private readonly ILogger<FilesController> _logger;
     private readonly FilesService _filesService;
 
-    public FilesController(FilesService filesService) =>
+    public FilesController(FilesService filesService, ILogger<FilesController> logger)
+    {
         _filesService = filesService;
+        _logger = logger;
+    }
 
     [HttpPost]
     public async Task<IActionResult> PostFile([FromForm] IFormFile file, [FromRoute] Guid id)
@@ -21,7 +25,7 @@ public class FilesController : ControllerBase
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            _logger.LogError(e, "cannot save file");
             return BadRequest();
         }
     }

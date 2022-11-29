@@ -124,7 +124,7 @@ public class BusHandlerService : BackgroundService
                     {
                         var fileId = Encoding.UTF8.GetString(ea.Body.ToArray());
 
-                        Console.WriteLine(fileId);
+                        _logger.LogDebug("got new file id={file id} from bus", fileId);
 
                         if (!(await _s3Client.ListBucketsAsync()).Buckets.Exists(b =>
                                 b.BucketName == _bucketsOptions.PermBucketName))
@@ -137,7 +137,7 @@ public class BusHandlerService : BackgroundService
                         var db = redisConnection.GetDatabase();
                         var data = db.StringGet(fileId);
                         if (!data.HasValue) throw new Exception();
-                        Console.WriteLine(data);
+                        _logger.LogDebug("data of file meta: {data}", data);
                         try
                         {
                             var meta = JsonSerializer.Deserialize<SoundFileMeta>(data!) ?? throw new Exception();
@@ -172,7 +172,7 @@ public class BusHandlerService : BackgroundService
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine(e);
+                        _logger.LogError(e, "error in BusHandlerService");
                     }
                 };
                 channel.BasicConsume(_rabbitOptions.FileMetasQueue, false, consumer);

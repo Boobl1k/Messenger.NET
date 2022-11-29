@@ -10,9 +10,13 @@ namespace Presentation.Controllers;
 public class FileMetadataController : ControllerBase
 {
     private readonly FilesService _filesService;
+    private readonly ILogger<FileMetadataController> _logger;
 
-    public FileMetadataController(FilesService filesService) =>
+    public FileMetadataController(FilesService filesService, ILogger<FileMetadataController> logger)
+    {
         _filesService = filesService;
+        _logger = logger;
+    }
 
     private const string SoundEndpoint = "Sound";
     private const string TextEndpoint = "Text";
@@ -30,7 +34,7 @@ public class FileMetadataController : ControllerBase
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            _logger.LogError(e, "cannot save file meta");
             return BadRequest();
         }
     }
@@ -44,7 +48,7 @@ public class FileMetadataController : ControllerBase
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            _logger.LogError(e, "cannot read file meta");
             return BadRequest();
         }
     }
@@ -63,7 +67,7 @@ public class FileMetadataController : ControllerBase
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            _logger.LogError(e, "cannot save file meta");
             return BadRequest();
         }
     }
@@ -77,7 +81,7 @@ public class FileMetadataController : ControllerBase
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            _logger.LogError(e, "cannot read file meta");
             return BadRequest();
         }
     }
@@ -97,7 +101,7 @@ public class FileMetadataController : ControllerBase
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            _logger.LogError(e, "cannot save file meta");
             return BadRequest();
         }
     }
@@ -111,7 +115,7 @@ public class FileMetadataController : ControllerBase
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            _logger.LogError(e, "cannot read file meta");
             return BadRequest();
         }
     }
