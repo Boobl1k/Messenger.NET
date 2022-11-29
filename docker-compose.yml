@@ -57,13 +57,6 @@ services:
         networks:
             default:
     
-    structurizr:
-        image: structurizr/lite
-        ports:
-            - 8001:8080
-        volumes:
-            - './structurizr:/usr/local/structurizr/'
-    
     rabbit:
         image: rabbitmq:3-management
         ports:
