@@ -34,7 +34,7 @@ public class FileMetadataController : ControllerBase
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "cannot save file meta");
+            _logger.LogError(e, "😭 cannot save file meta");
             return BadRequest();
         }
     }
@@ -48,7 +48,7 @@ public class FileMetadataController : ControllerBase
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "cannot read file meta");
+            _logger.LogError(e, "😭 cannot read file meta");
             return BadRequest();
         }
     }
@@ -67,7 +67,7 @@ public class FileMetadataController : ControllerBase
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "cannot save file meta");
+            _logger.LogError(e, "😭 cannot save file meta");
             return BadRequest();
         }
     }
@@ -81,7 +81,7 @@ public class FileMetadataController : ControllerBase
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "cannot read file meta");
+            _logger.LogError(e, "😭 cannot read file meta");
             return BadRequest();
         }
     }
@@ -101,7 +101,7 @@ public class FileMetadataController : ControllerBase
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "cannot save file meta");
+            _logger.LogError(e, "😭 cannot save file meta");
             return BadRequest();
         }
     }
@@ -115,7 +115,7 @@ public class FileMetadataController : ControllerBase
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "cannot read file meta");
+            _logger.LogError(e, "😭 cannot read file meta");
             return BadRequest();
         }
     }

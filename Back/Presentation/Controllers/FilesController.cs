@@ -25,7 +25,7 @@ public class FilesController : ControllerBase
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "cannot save file");
+            _logger.LogError(e, "😭 cannot save file");
             return BadRequest();
         }
     }

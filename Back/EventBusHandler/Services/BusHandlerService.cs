@@ -172,7 +172,7 @@ public class BusHandlerService : BackgroundService
                     }
                     catch (Exception e)
                     {
-                        _logger.LogError(e, "error in BusHandlerService");
+                        _logger.LogError(e, "😭 error in BusHandlerService");
                     }
                 };
                 channel.BasicConsume(_rabbitOptions.FileMetasQueue, false, consumer);
@@ -181,7 +181,7 @@ public class BusHandlerService : BackgroundService
         }
         catch (Exception e)
         {
-            _logger.LogError("ERROR: \'{ErrorMessage}\'", e.Message);
+            _logger.LogError("😭 ERROR: \'{ErrorMessage}\'", e.Message);
         }
     }
 
