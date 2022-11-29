@@ -68,6 +68,9 @@ public class FilesService
         await HandleFileMoving(meta.Id);
     }
 
+    public async Task<T> GetFileMetaAsync<T>(Guid id) where T : class, IFileMeta =>
+        await _cacheService.GetValueAsync<T>(id);
+
     private async Task HandleFileMoving(Guid id)
     {
         if (await _redisConnection.GetDatabase().StringIncrementAsync(

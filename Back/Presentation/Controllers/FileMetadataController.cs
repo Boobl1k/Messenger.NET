@@ -9,14 +9,10 @@ namespace Presentation.Controllers;
 [Route("api/[controller]")]
 public class FileMetadataController : ControllerBase
 {
-    private readonly CacheService _cacheService;
     private readonly FilesService _filesService;
 
-    public FileMetadataController(CacheService cacheService, FilesService filesService)
-    {
-        _cacheService = cacheService;
+    public FileMetadataController(FilesService filesService) =>
         _filesService = filesService;
-    }
 
     private const string SoundEndpoint = "Sound";
     private const string TextEndpoint = "Text";
@@ -44,7 +40,7 @@ public class FileMetadataController : ControllerBase
     {
         try
         {
-            return Ok(await _cacheService.GetValueAsync<SoundFileMeta>(id));
+            return Ok(await _filesService.GetFileMetaAsync<SoundFileMeta>(id));
         }
         catch (Exception e)
         {
@@ -77,7 +73,7 @@ public class FileMetadataController : ControllerBase
     {
         try
         {
-            return Ok(await _cacheService.GetValueAsync<TextFileMeta>(id));
+            return Ok(await _filesService.GetFileMetaAsync<TextFileMeta>(id));
         }
         catch (Exception e)
         {
@@ -111,7 +107,7 @@ public class FileMetadataController : ControllerBase
     {
         try
         {
-            return Ok(await _cacheService.GetValueAsync<VideoFileMeta>(id));
+            return Ok(await _filesService.GetFileMetaAsync<VideoFileMeta>(id));
         }
         catch (Exception e)
         {
