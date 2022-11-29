@@ -1,14 +1,17 @@
 using Domain;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Presentation.Options;
 
 namespace Presentation;
 
 public class AppDbContext : DbContext
 {
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseNpgsql("Host=db;Port=5432;Username=testuser;Password=testpass;Database=testDb;");
-    }
+    private readonly DbOptions _options;
+    public AppDbContext(IOptions<DbOptions> options) => _options = options.Value;
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => 
+        optionsBuilder.UseNpgsql(_options.ConnectionString);
 
     public DbSet<Message> Messages { get; set; } = null!;
 }

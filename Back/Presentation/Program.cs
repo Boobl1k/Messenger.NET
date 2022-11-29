@@ -2,6 +2,7 @@ using Amazon.S3;
 using Microsoft.EntityFrameworkCore;
 using Presentation;
 using Presentation.Hubs;
+using Presentation.Options;
 using Presentation.RabbitMQ.Producer;
 using Presentation.Repositories;
 using Presentation.Services;
@@ -14,17 +15,22 @@ services.AddControllers().AddNewtonsoftJson();
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
-services.AddDbContext<AppDbContext>();
+services.Configure<DbOptions>(builder.Configuration.GetSection(DbOptions.OptionsPath));
 
-services.AddScoped<MessagesRepository>();
-services.AddScoped<MessagesService>();
-services.AddSingleton<MessagesProducer>();
-services.AddSingleton<FileSaveCommandsProducer>();
-services.AddSingleton<AmazonS3Client>(new AmazonS3Client("qweqweqwe", "qweqweqwe",
-    new AmazonS3Config { ServiceURL = "http://minio:9000", ForcePathStyle = true }));
-services.AddSingleton<FilesService>();
-services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect("redis"));
-services.AddSingleton<CacheService>();
+services.AddDbContext<AppDbContext>()
+    .AddScoped<MessagesRepository>()
+    .AddScoped<MessagesService>()
+    .AddSingleton<MessagesProducer>()
+    .AddSingleton<FileSaveCommandsProducer>()
+    .AddSingleton<FilesService>()
+    .AddSingleton<CacheService>();
+
+var s3Options = builder.Configuration.GetSection(S3Options.OptionsPath).Get<S3Options>();
+services.AddSingleton(new AmazonS3Client(s3Options.AccessKey, s3Options.SecretKey,
+    new AmazonS3Config { ServiceURL = s3Options.Url, ForcePathStyle = true }));
+
+var redisOptions = builder.Configuration.GetSection(RedisOptions.OptionsPath).Get<RedisOptions>();
+services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisOptions.Configuration));
 
 // SignalR
 services.AddSignalR(opt => { opt.EnableDetailedErrors = true; });
