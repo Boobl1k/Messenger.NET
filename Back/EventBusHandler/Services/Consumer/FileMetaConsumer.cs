@@ -60,7 +60,7 @@ internal class FileMetaConsumer : ConsumerBase, IDisposable
                 var data = await _redisCacheService.GetValueAsync(fileId);
 
                 if (!data.HasValue) throw new Exception("Data is invalid");
-                _logger.LogDebug("data of file meta: {Data}", data);
+                _logger.LogInformation("data of file meta: {Data}", data);
 
 
                 using var scope = ServiceProvider.CreateScope();
@@ -96,7 +96,6 @@ internal class FileMetaConsumer : ConsumerBase, IDisposable
                 }
 
                 _fileMetasChannel.BasicAck(ea.DeliveryTag, false);
-                _logger.LogInformation("Ack");
                 await Task.Yield();
             }
             catch (Exception e)
