@@ -1,7 +1,7 @@
 ﻿using Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace EventBusHandler.Context;
+namespace EventBusHandler.Data.Context;
 
 public class AppDbContext : DbContext
 {

@@ -1,8 +1,8 @@
-using EventBusHandler.Context;
+using EventBusHandler.Data;
+using EventBusHandler.Data.Context;
 using EventBusHandler.Options;
 using EventBusHandler.Services;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -15,13 +15,24 @@ services
     .Configure<MongoOptions>(
         builder.Configuration.GetSection(MongoOptions.MongoConfiguration))
     .Configure<RabbitOptions>(
-        builder.Configuration.GetSection(RabbitOptions.RabbitConfiguration));
+        builder.Configuration.GetSection(RabbitOptions.RabbitConfiguration))
+    .Configure<RedisOptions>(
+        builder.Configuration.GetSection(RedisOptions.RedisConfiguration));
 
 services.AddDbContext<AppDbContext>();
-services.AddHostedService<BusHandlerService>();
+services.AddMongoDbContext();
+services.AddUnitOfWork();
 
-var app = builder.Build();
+services.AddSingleton<IConnectionMultiplexer>(x =>
+    ConnectionMultiplexer.Connect(builder.Configuration.GetSection(RedisOptions.RedisConfiguration)
+        .GetValue<string>(new RedisOptions().ConnectionString)));
 
-app.MapGet("/", () => "EventBusHandler Service");
+var redisOptions = builder.Configuration.GetSection(RedisOptions.RedisConfiguration).Get<RedisOptions>();
+services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisOptions.ConnectionString));
+services.AddRedisCacheService();
 
-app.Run();
+services
+    .AddHostedService<FileMetaBusHandlerService>()
+    .AddHostedService<MessageBusHandlerService>();
+
+builder.Build().Run();
