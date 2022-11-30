@@ -1,26 +1,17 @@
-﻿using EventBusHandler.Options;
-using Microsoft.Extensions.Options;
-using StackExchange.Redis;
+﻿using StackExchange.Redis;
 
 namespace EventBusHandler.Services;
 
 public class RedisCacheService
 {
-    private readonly RedisOptions _redisOptions;
-    private readonly IConnectionMultiplexer _connectionMultiplexer;
-    private readonly ILogger<RedisCacheService> _logger;
+    private readonly IConnectionMultiplexer _connection;
 
-    public RedisCacheService(IOptions<RedisOptions> redisOptions, ILogger<RedisCacheService> logger,
-        IConnectionMultiplexer connectionMultiplexer)
-    {
-        _logger = logger;
-        _connectionMultiplexer = connectionMultiplexer;
-        _redisOptions = redisOptions.Value;
-    }
+    public RedisCacheService(IConnectionMultiplexer connection) =>
+        _connection = connection;
 
-    public async Task<RedisValue> GetAsync(string key)
+    public async Task<RedisValue> GetValueAsync(string key)
     {
-        var db = _connectionMultiplexer.GetDatabase();
+        var db = _connection.GetDatabase();
         return await db.StringGetAsync(key);
     }
 }
