@@ -21,13 +21,14 @@ internal class FileMetaConsumer : ConsumerBase, IDisposable
 
     public FileMetaConsumer(IOptions<RabbitOptions> rabbitOptions, ILogger<FileMetaConsumer> logger,
         IServiceProvider serviceProvider, AmazonS3Client s3Client, IOptions<BucketsOptions> bucketsOptions,
-        RedisCacheService redisCacheService, ConnectionFactory connectionFactory) : base(rabbitOptions, serviceProvider, connectionFactory)
+        RedisCacheService redisCacheService, ConnectionFactory connectionFactory) : base(rabbitOptions, serviceProvider,
+        connectionFactory)
     {
         _logger = logger;
         _s3Client = s3Client;
         _redisCacheService = redisCacheService;
         _bucketsOptions = bucketsOptions.Value;
-        
+
         _fileMetasConnection = ConnectionFactory.CreateConnection();
         _fileMetasChannel = _fileMetasConnection.CreateModel();
     }
@@ -59,37 +60,33 @@ internal class FileMetaConsumer : ConsumerBase, IDisposable
 
                 var data = await _redisCacheService.GetValueAsync(fileId);
 
-                if (!data.HasValue) throw new Exception("Data is invalid");
+                if (data is null) throw new Exception("Data is invalid");
                 _logger.LogInformation("data of file meta: {Data}", data);
 
 
                 using var scope = ServiceProvider.CreateScope();
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<UnitOfWork>();
 
-                try
-                {
-                    var meta = JsonSerializer.Deserialize<SoundFileMeta>(data!) ?? throw new Exception();
-                    if (meta is not { Album: { }, Author: { } })
-                        throw new Exception();
 
-                    await unitOfWork.SoundFileMetas.CreateAsync(meta);
+                var soundMeta = JsonSerializer.Deserialize<SoundFileMeta>(data);
+                if (soundMeta is { Album: { }, Author: { } })
+                {
+                    await unitOfWork.SoundFileMetas.CreateAsync(soundMeta);
                     _logger.LogInformation("Added Sound");
                 }
-                catch
+                else
                 {
-                    try
+                    var textMeta = JsonSerializer.Deserialize<VideoFileMeta>(data);
+                    if (textMeta is { Producer: { }, Studio: { } })
                     {
-                        var meta = JsonSerializer.Deserialize<VideoFileMeta>(data!) ?? throw new Exception();
-                        if (meta is not { Producer: { }, Studio: { } })
-                            throw new Exception();
-
-                        await unitOfWork.VideoFileMetas.CreateAsync(meta);
+                        await unitOfWork.VideoFileMetas.CreateAsync(textMeta);
                         _logger.LogInformation("Added Video");
                     }
-                    catch
+                    else
                     {
-                        var meta = JsonSerializer.Deserialize<TextFileMeta>(data!) ?? throw new Exception();
-
+                        var meta = JsonSerializer.Deserialize<TextFileMeta>(data);
+                        if (meta is not { Name: { } })
+                            throw new Exception();
                         await unitOfWork.TextFileMetas.CreateAsync(meta);
                         _logger.LogInformation("Added Text");
                     }

@@ -18,10 +18,10 @@ public class MessagesService
 
     public async Task<IEnumerable<Message>> GetLast(int count = 20) => await _messagesRepository.GetLast(count);
 
-    public async Task<Message> AddMessage(Message message)
+    public Task<Message> AddMessage(Message message)
     {
         _messagePublisher.ProduceMessage(message);
-        return message;
+        return Task.FromResult(message);
     }
 
     public async Task<bool> RemoveAll() =>

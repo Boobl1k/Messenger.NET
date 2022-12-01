@@ -29,7 +29,7 @@ public class FileMetadataController : ControllerBase
     {
         try
         {
-            await _filesService.SaveFileMetaAsync(new SoundFileMeta(meta.Id, meta.Name, meta.Album, meta.Author));
+            await _filesService.SaveFileMetaAsync(new SoundFileMeta(meta.Id, meta.Name, meta.Author, meta.Album));
             return Ok();
         }
         catch (Exception e)

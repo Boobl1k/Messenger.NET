@@ -9,7 +9,7 @@ public class RedisCacheService
     public RedisCacheService(IConnectionMultiplexer connection) =>
         _connection = connection;
 
-    public async Task<RedisValue> GetValueAsync(string key)
+    public async Task<string?> GetValueAsync(string key)
     {
         var db = _connection.GetDatabase();
         return await db.StringGetAsync(key);
