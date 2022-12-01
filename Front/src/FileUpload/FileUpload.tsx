@@ -79,16 +79,15 @@ export default function FileUploader() {
 
     const generateMetaEditor = (type: FileType) => {
         function generateInput<T>(key: keyof T & string, setter: (a: (value: T) => T) => void, value: T) {
-            const onSet = (key: keyof T) =>
-                (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
-                    setter((oldMeta) => ({
-                        ...oldMeta,
-                        [key]: e.target.value
-                    }));
+            const onSet = (e: React.ChangeEvent<HTMLInputElement>) =>
+                setter((oldMeta) => ({
+                    ...oldMeta,
+                    [key]: e.target.value
+                }));
             return [
                 <label>{key[0].toUpperCase() + key.slice(1)}</label>,
                 <input value={value[key] as string}
-                       onChange={onSet(key)}
+                       onChange={onSet}
                        className="form-control"/>];
         }
 
