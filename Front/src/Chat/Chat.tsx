@@ -17,7 +17,7 @@ type Props = {
 export default function Chat(props: Props) {
     const [chat, setChat] = useState<IMessage[]>([]);
     const [connection, setConnection] = useState<null | HubConnection>(null);
-    const {username} = useParams();
+    const {userName, adminName} = useParams();
 
     useEffect(() => {
         const connect = new HubConnectionBuilder()
@@ -42,15 +42,21 @@ export default function Chat(props: Props) {
     }, [connection]);
 
     useEffect(() => {
-        axios.get<IMessage[]>('messages').then(res => setChat(res.data));
+        axios.get<IMessage[]>('messages', {params: {username: userName}}).then(res => setChat(res.data));
     }, [])
 
     const sendMessage = async (text: string) => {
+        if(!userName || !adminName){
+            console.error('there has to be username');
+            return;
+        }
         const chatMessage: IMessage = {
             id: uuidv4(),
-            userName: username || 'unknown user',
+            userName: userName,
+            adminName: adminName,
             text: text,
-            dateTime: new Date()
+            dateTime: new Date(),
+            sentByAdmin: props.isAdmin,
         };
 
         if (connection)
@@ -60,17 +66,19 @@ export default function Chat(props: Props) {
     }
 
     return (
-        <div className="flex flex-col flex-grow w-full max-w-xl bg-white shadow-xl rounded-lg overflow-hidden">
-            <Button onClick={async () => {
-                await axios.delete('messages');
-                setChat([]);
-            }}>
-                Reset
-            </Button>
-            <ChatWindow chat={chat}/>
-            <hr/>
-            <ChatInput sendMessage={sendMessage}/>
+        <>
+            <div className="flex flex-col flex-grow w-full max-w-xl bg-white shadow-xl rounded-lg overflow-hidden">
+                <Button onClick={async () => {
+                    await axios.delete('messages');
+                    setChat([]);
+                }}>
+                    Reset
+                </Button>
+                <ChatWindow chat={chat}/>
+                <hr/>
+                <ChatInput sendMessage={sendMessage}/>
+            </div>
             <FileUploader/>
-        </div>
+        </>
     );
 }

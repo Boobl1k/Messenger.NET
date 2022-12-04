@@ -3,4 +3,6 @@ export default interface IMessage {
     text: string;
     dateTime: Date;
     userName: string;
+    adminName: string;
+    sentByAdmin: boolean;
 }

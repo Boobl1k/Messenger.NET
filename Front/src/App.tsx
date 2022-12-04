@@ -11,8 +11,8 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path={'/'} element={<LoginForm/>}/>
-                    <Route path={'/chat/admin/:username'} element={<Chat isAdmin={true}/>}/>
-                    <Route path={'/chat/user/:username'} element={<Chat isAdmin={false}/>}/>
+                    <Route path={'/chat/admin/:userName/:adminName'} element={<Chat isAdmin={true}/>}/>
+                    <Route path={'/chat/user/:userName/:adminName'} element={<Chat isAdmin={false}/>}/>
                 </Routes>
             </BrowserRouter>
         </div>

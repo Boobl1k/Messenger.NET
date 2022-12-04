@@ -17,7 +17,8 @@ internal class MessageConsumer : ConsumerBase, IDisposable
     private readonly IModel _messagesChannel;
 
     public MessageConsumer(IOptions<RabbitOptions> rabbitOptions, ILogger<MessageConsumer> logger,
-        IServiceProvider serviceProvider, ConnectionFactory connectionFactory) : base(rabbitOptions, serviceProvider, connectionFactory)
+        IServiceProvider serviceProvider, ConnectionFactory connectionFactory) : base(rabbitOptions, serviceProvider,
+        connectionFactory)
     {
         _logger = logger;
 
@@ -30,7 +31,7 @@ internal class MessageConsumer : ConsumerBase, IDisposable
         _messagesChannel.QueueDeclare(queue: RabbitOptions.MessagesQueue, durable: true, exclusive: false,
             autoDelete: false,
             arguments: null);
-        
+
         _logger.LogInformation("{Now}: Messages connection opened", DateTime.Now);
 
         var consumer = new AsyncEventingBasicConsumer(_messagesChannel);
@@ -44,8 +45,8 @@ internal class MessageConsumer : ConsumerBase, IDisposable
                 return;
             }
 
-            _logger.LogInformation(@"New message: {MessageUserName} says '{MessageText}'", message.UserName,
-                message.Text);
+            _logger.LogInformation(@"New message: {SenderUserName} says to {ReceivingUserName} '{ReceivingUserName}'",
+                message.UserName, message.AdminName, message.Text);
 
             using var scope = ServiceProvider.CreateScope();
             var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
@@ -61,7 +62,7 @@ internal class MessageConsumer : ConsumerBase, IDisposable
     public void Dispose()
     {
         _messagesChannel.Dispose();
-        
+
         if (_messagesConnection?.IsOpen ?? false)
             _messagesConnection.Dispose();
     }

@@ -12,7 +12,8 @@ public class MessagesController : ControllerBase
     public MessagesController(MessagesService messagesService) => _messagesService = messagesService;
 
     [HttpGet]
-    public async Task<IActionResult> GetLastHundred() => new JsonResult(await _messagesService.GetLast(100));
+    public async Task<IActionResult> GetLastHundredForUser([FromQuery] string username) =>
+        new JsonResult(await _messagesService.GetLastForUser(username, 100));
 
     [HttpDelete]
     public async Task<IActionResult> ResetChat() =>
