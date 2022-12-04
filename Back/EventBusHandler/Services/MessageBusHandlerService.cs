@@ -21,7 +21,7 @@ internal class MessageBusHandlerService : BackgroundService
         {
             try
             {
-                _messageConsumer.ConsumeMessage();
+                _messageConsumer.StartConsumingMessages();
             }
             catch (Exception e)
             {

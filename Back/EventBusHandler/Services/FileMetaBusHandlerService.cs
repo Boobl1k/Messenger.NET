@@ -21,7 +21,7 @@ internal class FileMetaBusHandlerService : BackgroundService
         {
             try
             {
-                _fileMetaConsumer.ConsumeFileMeta();
+                _fileMetaConsumer.StartConsumingFileMetas();
             }
             catch (Exception e)
             {

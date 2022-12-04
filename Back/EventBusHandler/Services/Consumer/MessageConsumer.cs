@@ -25,7 +25,7 @@ internal class MessageConsumer : ConsumerBase, IDisposable
         _messagesChannel = _messagesConnection.CreateModel();
     }
 
-    public void ConsumeMessage()
+    public void StartConsumingMessages()
     {
         _messagesChannel.QueueDeclare(queue: RabbitOptions.MessagesQueue, durable: true, exclusive: false,
             autoDelete: false,

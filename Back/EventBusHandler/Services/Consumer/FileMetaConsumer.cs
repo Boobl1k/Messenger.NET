@@ -33,7 +33,7 @@ internal class FileMetaConsumer : ConsumerBase, IDisposable
         _fileMetasChannel = _fileMetasConnection.CreateModel();
     }
 
-    public void ConsumeFileMeta()
+    public void StartConsumingFileMetas()
     {
         _fileMetasChannel.QueueDeclare(queue: RabbitOptions.FileMetasQueue, durable: true, exclusive: false,
             autoDelete: false,
