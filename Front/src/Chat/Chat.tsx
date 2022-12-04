@@ -7,10 +7,17 @@ import IMessage from "../entities/IMessage";
 import axios from "../axios";
 import {Button} from "@mui/material";
 import {API_URL, BASE_URL} from "../config";
+import FileUploader from "../FileUpload/FileUpload";
+import {useParams} from "react-router-dom";
 
-export default function Chat() {
+type Props = {
+    isAdmin: boolean,
+}
+
+export default function Chat(props: Props) {
     const [chat, setChat] = useState<IMessage[]>([]);
     const [connection, setConnection] = useState<null | HubConnection>(null);
+    const {username} = useParams();
 
     useEffect(() => {
         const connect = new HubConnectionBuilder()
@@ -38,10 +45,10 @@ export default function Chat() {
         axios.get<IMessage[]>('messages').then(res => setChat(res.data));
     }, [])
 
-    const sendMessage = async (userName: string, text: string) => {
+    const sendMessage = async (text: string) => {
         const chatMessage: IMessage = {
             id: uuidv4(),
-            userName: userName,
+            userName: username || 'unknown user',
             text: text,
             dateTime: new Date()
         };
@@ -63,6 +70,7 @@ export default function Chat() {
             <ChatWindow chat={chat}/>
             <hr/>
             <ChatInput sendMessage={sendMessage}/>
+            <FileUploader/>
         </div>
     );
 }
