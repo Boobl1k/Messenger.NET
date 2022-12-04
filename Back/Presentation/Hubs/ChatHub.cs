@@ -12,6 +12,8 @@ public class ChatHub : Hub<IChatClient>
     public ChatHub(MessagesService messagesService) => 
         _messagesService = messagesService;
 
-    public async Task SendMessage(Message message) => 
-        await Clients.All.ReceiveMessage(await _messagesService.AddMessage(message));
+    public async Task SendMessage(string userName, Message message)
+    {
+        await Task.WhenAll(_messagesService.AddMessage(message), Clients.All.ReceiveMessage(userName, message));
+    }
 }

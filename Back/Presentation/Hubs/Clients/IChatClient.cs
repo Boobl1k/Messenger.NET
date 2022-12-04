@@ -4,5 +4,5 @@ namespace Presentation.Hubs.Clients;
 
 public interface IChatClient
 {
-    Task ReceiveMessage(Message message);
+    Task ReceiveMessage(string userName, Message message);
 }

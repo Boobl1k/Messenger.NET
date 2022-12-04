@@ -33,8 +33,9 @@ export default function Chat(props: Props) {
             connection
                 .start()
                 .then(async () => {
-                    connection.on('ReceiveMessage', (message: IMessage) => {
-                        setChat(prev => [...prev, message]);
+                    connection.on('ReceiveMessage', (u: string, message: IMessage) => {
+                        if (u === userName)
+                            setChat(prev => [...prev, message]);
                     });
                 })
                 .catch(error => console.log('Connection failed: ', error));
@@ -46,7 +47,7 @@ export default function Chat(props: Props) {
     }, [])
 
     const sendMessage = async (text: string) => {
-        if(!userName || !adminName){
+        if (!userName || !adminName) {
             console.error('there has to be username');
             return;
         }
@@ -61,7 +62,7 @@ export default function Chat(props: Props) {
 
         if (connection)
             await connection
-                .send("SendMessage", chatMessage)
+                .send("SendMessage", userName, chatMessage)
                 .catch(() => console.log('Publishing in SignalR failed'));
     }
 
