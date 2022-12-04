@@ -1,9 +1,12 @@
+using Amazon.S3;
 using Microsoft.EntityFrameworkCore;
 using Presentation;
 using Presentation.Hubs;
+using Presentation.Options;
 using Presentation.RabbitMQ.Producer;
 using Presentation.Repositories;
 using Presentation.Services;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -12,12 +15,22 @@ services.AddControllers().AddNewtonsoftJson();
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
-services.AddDbContext<AppDbContext>();
+services.Configure<DbOptions>(builder.Configuration.GetSection(DbOptions.OptionsPath));
 
-services.AddScoped<MessagesRepository>();
-services.AddScoped<MessagesService>();
-services.AddScoped<IMessageProducer, RabbitMqProducer>();
-services.AddSingleton<FilesService>();
+services.AddDbContext<AppDbContext>()
+    .AddScoped<MessagesRepository>()
+    .AddScoped<MessagesService>()
+    .AddSingleton<MessagesProducer>()
+    .AddSingleton<FileSaveCommandsProducer>()
+    .AddSingleton<FilesService>()
+    .AddSingleton<CacheService>();
+
+var s3Options = builder.Configuration.GetSection(S3Options.OptionsPath).Get<S3Options>();
+services.AddSingleton(new AmazonS3Client(s3Options.AccessKey, s3Options.SecretKey,
+    new AmazonS3Config { ServiceURL = s3Options.Url, ForcePathStyle = true }));
+
+var redisOptions = builder.Configuration.GetSection(RedisOptions.OptionsPath).Get<RedisOptions>();
+services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisOptions.Configuration));
 
 // SignalR
 services.AddSignalR(opt => { opt.EnableDetailedErrors = true; });
@@ -43,19 +56,6 @@ await using (var scope = app.Services.CreateAsyncScope())
 
 if (app.Environment.IsDevelopment())
     app.UseSwagger().UseSwaggerUI();
-
-app.Use(async (context, next) =>
-{
-    Console.WriteLine(context.Request.Path);
-
-    if (context.Request.Path == "/")
-    {
-        context.Response.StatusCode = 200;
-        await context.Response.WriteAsync("Hello");
-    }
-    else
-        await next();
-});
 
 app
     // .UseHttpsRedirection()

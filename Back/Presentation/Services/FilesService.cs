@@ -1,63 +1,80 @@
 using Amazon.S3;
 using Amazon.S3.Model;
+using Domain.File;
+using Presentation.RabbitMQ.Producer;
+using StackExchange.Redis;
 
 namespace Presentation.Services;
 
-public record FileData(Stream Stream, string ContentType, string Name);
+public record FileData(Stream Stream, string ContentType, Guid Id);
 
 public class FilesService
 {
-    private const string BucketName = "defaultbucket";
-    private const string OriginalFilenameMetadataField = "original-filename";
-    private readonly AmazonS3Client _client;
+    private const string BucketName = "tempbucket";
 
-    public FilesService()
+    private readonly AmazonS3Client _s3Client;
+    private readonly CacheService _cacheService;
+    private readonly IConnectionMultiplexer _redisConnection;
+    private readonly FileSaveCommandsProducer _fileSaveCommandsProducer;
+
+    public FilesService(AmazonS3Client s3Client, CacheService cacheService, IConnectionMultiplexer redisConnection,
+        FileSaveCommandsProducer fileSaveCommandsProducer)
     {
-        _client = new AmazonS3Client("qweqweqwe", "qweqweqwe",
-            new AmazonS3Config() { ServiceURL = "http://minio:9000", ForcePathStyle = true });
+        _s3Client = s3Client;
+        _cacheService = cacheService;
+        _redisConnection = redisConnection;
+        _fileSaveCommandsProducer = fileSaveCommandsProducer;
     }
 
-    public async Task<Guid> SaveFileAsync(Stream stream, string filename, string contentType)
+    public async Task<Guid> SaveFileAsync(Stream stream, string contentType, Guid id)
     {
-        if (!(await _client.ListBucketsAsync()).Buckets.Exists(b => b.BucketName == BucketName))
-            await _client.PutBucketAsync(BucketName);
-        
-        var id = Guid.NewGuid();
-        var encodedFilename = Uri.EscapeDataString(filename);
-        var request = new PutObjectRequest()
+        if (!(await _s3Client.ListBucketsAsync()).Buckets.Exists(b => b.BucketName == BucketName))
+            await _s3Client.PutBucketAsync(BucketName);
+
+        var request = new PutObjectRequest
         {
             BucketName = BucketName,
             InputStream = stream,
             AutoCloseStream = true,
             Key = id.ToString(),
-            ContentType = contentType,
-            Headers =
-            {
-                ContentDisposition = $"attachment; filename=\"{encodedFilename}\""
-            },
+            ContentType = contentType
         };
-        request.Metadata.Add(OriginalFilenameMetadataField, encodedFilename);
-        
-        await _client.PutObjectAsync(request);
+
+        await _s3Client.PutObjectAsync(request);
+        await HandleFileMoving(id);
 
         return id;
     }
 
     public async Task<FileData> ReadFileAsync(Guid fileId)
     {
-        var request = new GetObjectRequest()
+        var request = new GetObjectRequest
         {
             Key = fileId.ToString(),
             BucketName = BucketName
         };
-        var response = await _client.GetObjectAsync(request);
-
-        var filename = response.Metadata[OriginalFilenameMetadataField];
+        var response = await _s3Client.GetObjectAsync(request);
 
         return new FileData(
             response.ResponseStream,
             response.Headers.ContentType,
-            filename
+            fileId
         );
+    }
+
+    public async Task SaveFileMetaAsync(IFileMeta meta)
+    {
+        await _cacheService.SetValueAsync(meta.Id, meta);
+        await HandleFileMoving(meta.Id);
+    }
+
+    public async Task<T> GetFileMetaAsync<T>(Guid id) where T : class, IFileMeta =>
+        await _cacheService.GetValueAsync<T>(id);
+
+    private async Task HandleFileMoving(Guid id)
+    {
+        if (await _redisConnection.GetDatabase().StringIncrementAsync(
+                BitConverter.ToInt32(id.ToByteArray(), 0).ToString()) > 1)
+            _fileSaveCommandsProducer.ProduceFileSaveCommand(id);
     }
 }

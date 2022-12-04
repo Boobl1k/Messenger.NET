@@ -4,41 +4,28 @@ using Presentation.Services;
 namespace Presentation.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/[controller]/{id:guid?}")]
 public class FilesController : ControllerBase
 {
+    private readonly ILogger<FilesController> _logger;
     private readonly FilesService _filesService;
 
-    public FilesController(FilesService filesService) =>
-        _filesService = filesService;
-
-    [HttpGet]
-    public async Task<IActionResult> GetFile(Guid id)
+    public FilesController(FilesService filesService, ILogger<FilesController> logger)
     {
-        Console.WriteLine(id);
-        try
-        {
-            var file = await _filesService.ReadFileAsync(id);
-            return File(file.Stream, file.ContentType, file.Name);
-        }
-        catch(Exception e)
-        {
-            Console.WriteLine(e);
-            return NotFound();
-        }
+        _filesService = filesService;
+        _logger = logger;
     }
 
     [HttpPost]
-    public async Task<IActionResult> PostFile([FromForm]IFormFile file)
+    public async Task<IActionResult> PostFile([FromForm] IFormFile file, [FromRoute] Guid id)
     {
         try
         {
-            return Ok(new
-                { id = await _filesService.SaveFileAsync(file.OpenReadStream(), file.Name, file.ContentType) });
+            return Ok(await _filesService.SaveFileAsync(file.OpenReadStream(), file.ContentType, id));
         }
-        catch(Exception e)
+        catch (Exception e)
         {
-            Console.WriteLine(e);
+            _logger.LogError(e, "😭 cannot save file");
             return BadRequest();
         }
     }

@@ -6,7 +6,7 @@ import ChatInput from "./ChatInput/ChatInput";
 import IMessage from "../entities/IMessage";
 import axios from "../axios";
 import {Button} from "@mui/material";
-import {BASE_URL} from "../config";
+import {API_URL, BASE_URL} from "../config";
 
 export default function Chat() {
     const [chat, setChat] = useState<IMessage[]>([]);
@@ -35,7 +35,7 @@ export default function Chat() {
     }, [connection]);
 
     useEffect(() => {
-        axios.get<IMessage[]>('api/messages').then(res => setChat(res.data));
+        axios.get<IMessage[]>('messages').then(res => setChat(res.data));
     }, [])
 
     const sendMessage = async (userName: string, text: string) => {
@@ -55,7 +55,7 @@ export default function Chat() {
     return (
         <div className="flex flex-col flex-grow w-full max-w-xl bg-white shadow-xl rounded-lg overflow-hidden">
             <Button onClick={async () => {
-                await axios.delete('api/messages');
+                await axios.delete('messages');
                 setChat([]);
             }}>
                 Reset
