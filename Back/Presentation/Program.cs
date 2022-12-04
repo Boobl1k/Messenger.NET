@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Presentation;
 using Presentation.Hubs;
 using Presentation.Options;
+using Presentation.RabbitMQ.Consumers;
 using Presentation.RabbitMQ.Producer;
 using Presentation.Repositories;
 using Presentation.Services;
@@ -22,8 +23,11 @@ services.AddDbContext<AppDbContext>()
     .AddScoped<MessagesService>()
     .AddSingleton<MessagesProducer>()
     .AddSingleton<FileSaveCommandsProducer>()
+    .AddSingleton<AdminProducer>()
+    .AddSingleton<AdminConsumer>()
     .AddSingleton<FilesService>()
-    .AddSingleton<CacheService>();
+    .AddSingleton<CacheService>()
+    .AddSingleton<AdminService>();
 
 var s3Options = builder.Configuration.GetSection(S3Options.OptionsPath).Get<S3Options>();
 services.AddSingleton(new AmazonS3Client(s3Options.AccessKey, s3Options.SecretKey,

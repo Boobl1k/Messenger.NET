@@ -8,7 +8,7 @@ import axios from "../axios";
 import {Button} from "@mui/material";
 import {API_URL, BASE_URL} from "../config";
 import FileUploader from "../FileUpload/FileUpload";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 type Props = {
     isAdmin: boolean,
@@ -18,6 +18,7 @@ export default function Chat(props: Props) {
     const [chat, setChat] = useState<IMessage[]>([]);
     const [connection, setConnection] = useState<null | HubConnection>(null);
     const {userName, adminName} = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const connect = new HubConnectionBuilder()
@@ -37,6 +38,15 @@ export default function Chat(props: Props) {
                         if (u === userName)
                             setChat(prev => [...prev, message]);
                     });
+                    connection.on('GoWait', (a: string) => {
+                        if(a === adminName){
+                            if(props.isAdmin)
+                                navigate(`/wait/admin/${adminName}`);
+                            else
+                                navigate(`/`);
+                        }
+                        
+                    })
                 })
                 .catch(error => console.log('Connection failed: ', error));
         }
@@ -63,8 +73,27 @@ export default function Chat(props: Props) {
         if (connection)
             await connection
                 .send("SendMessage", userName, chatMessage)
-                .catch(() => console.log('Publishing in SignalR failed'));
+                .catch((e) => {
+                    console.error(e);
+                    console.log('Publishing in SignalR failed')
+                });
     }
+
+    const freeAdmin = async () => {
+        if (connection)
+            await connection
+                .send("FreeAdmin", adminName)
+                .catch((e) => {
+                    console.error(e);
+                    console.log('Cannot free the admin');
+                });
+    }
+
+    const onCloseChat = async () => {
+        await freeAdmin();
+        navigate('/');
+    }
+
 
     return (
         <>
@@ -74,6 +103,9 @@ export default function Chat(props: Props) {
                     setChat([]);
                 }}>
                     Reset
+                </Button>
+                <Button onClick={onCloseChat}>
+                    Close chat
                 </Button>
                 <ChatWindow chat={chat}/>
                 <hr/>

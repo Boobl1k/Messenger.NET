@@ -2,17 +2,13 @@ import React, {useState} from "react";
 import {Link} from "react-router-dom";
 
 export default function LoginForm() {
-    const [userName, setUserName] = useState('');
-    const [adminName, setAdminName] = useState('');
+    const [name, setName] = useState('');
     
-    const onSetUserName = (event: React.ChangeEvent<HTMLInputElement>) => setUserName(event.target.value);
-    const onSetAdminName = (event: React.ChangeEvent<HTMLInputElement>) => setAdminName(event.target.value);
+    const onSetUserName = (event: React.ChangeEvent<HTMLInputElement>) => setName(event.target.value);
 
     return <>
-        <input type={"text"} onChange={onSetUserName} placeholder={"user name"}/>
-        <br/>
-        <input type={"text"} onChange={onSetAdminName} placeholder={"admin name"}/>
-        <Link to={`chat/admin/${userName}/${adminName}`}>Login as admin</Link>
-        <Link to={`chat/user/${userName}/${adminName}`}>Login as user</Link>
+        <input type={"text"} onChange={onSetUserName} placeholder={"Your name"}/>
+        <Link to={`wait/admin/${name}`}>Login as admin</Link>
+        <Link to={`wait/user/${name}`}>Login as user</Link>
     </>
 }
