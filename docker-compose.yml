@@ -98,7 +98,6 @@ services:
             - './MyBook/MyBook.DataAccess:/MyBook.DataAccess/'
             - './MyBook/MyBook.Entity:/MyBook.Entity/'
             - './MyBook/MyBook.Services:/MyBook.Services/'
-            - './MyBook/MyBook.FSharpServices:/MyBook.FSharpServices/'
             - './MyBook/PostgresMigrations:/PostgresMigrations/'
         depends_on:
             - db
