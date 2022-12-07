@@ -36,7 +36,7 @@ export default function WaitingPage(props: Props) {
                     .then(async () => {
                         connection.on('GoChat', (a, userName) => {
                             if (a === name)
-                                navigate(`/chat/admin/${a}/${userName}`);
+                                navigate(`/chat/admin/${userName}/${name}`);
                         });
                         axios.post('/admin/free', {adminName: name});
                     })
@@ -48,7 +48,7 @@ export default function WaitingPage(props: Props) {
     useEffect(() => {
         if (getAdmin) {
             axios.get<{ adminName: string }>('/admin/find', {params: {userName: name}})
-                .then(res => navigate(`/chat/user/${res.data.adminName}/${name}`));
+                .then(res => navigate(`/chat/user/${name}/${res.data.adminName}`));
         }
     }, [getAdmin]);
 
