@@ -1,6 +1,7 @@
 ﻿<div class="container">
 	<div class="row">
 		<div class="chatbox chatbox--tray rounded-hg">
+					<a href="http://localhost/wait/user/@(User.Identity.Name)">
 			<div class="chatbox__title d-flex justify-content-between">
 				<button type="button" class="btn text-white">
 					<i class="fas fa-comment"></i>
@@ -14,6 +15,7 @@
 					</span>
 				</button>
 			</div>
+					</a>
 			
 			@if (User.Identity!.IsAuthenticated)
 			{
