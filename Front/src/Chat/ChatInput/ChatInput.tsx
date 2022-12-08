@@ -15,6 +15,7 @@ export default function ChatInput({sendMessage}: ChatInputProps) {
 
         if (isMessageProvided) {
             sendMessage(message);
+            setMessage('');
         } else {
             alert('Please insert an user and a message.');
         }

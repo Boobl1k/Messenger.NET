@@ -23,6 +23,6 @@ public class ChatHub : Hub<IChatClient>
     
     public async Task FreeAdmin(string adminName)
     {
-        await Task.WhenAll(_adminService.FreeAdmin(adminName), Clients.All.GoWait(adminName));
+        await Clients.All.GoWait(adminName);
     }
 }

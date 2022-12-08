@@ -111,7 +111,7 @@ export default function Chat(props: Props) {
                 <hr/>
                 <ChatInput sendMessage={sendMessage}/>
             </div>
-            <FileUploader/>
+            {/*<FileUploader/>*/}
         </>
     );
 }

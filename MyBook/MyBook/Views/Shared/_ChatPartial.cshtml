@@ -1,7 +1,14 @@
-﻿<div class="container">
+﻿@using MyBook.Entity
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@inject UserManager<User> _userManager
+@{
+	var user = User.Identity!.IsAuthenticated ? (User) await _userManager.FindByNameAsync(User.Identity!.Name) : null;
+}
+<div class="container">
 	<div class="row">
 		<div class="chatbox chatbox--tray rounded-hg">
-					<a href="http://localhost/wait/user/@(User.Identity.Name)">
+			<a href="http://localhost/wait/user/@(user.Name)">
 			<div class="chatbox__title d-flex justify-content-between">
 				<button type="button" class="btn text-white">
 					<i class="fas fa-comment"></i>
