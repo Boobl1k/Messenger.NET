@@ -15,4 +15,10 @@ public class Message
 
     [Required]
     public string UserName { get; set; } = null!;
+
+    [Required]
+    public string AdminName { get; set; } = null!;
+
+    [Required]
+    public bool SentByAdmin { get; set; }
 }

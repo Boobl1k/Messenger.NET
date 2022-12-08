@@ -28,8 +28,15 @@ namespace Presentation.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<string>("AdminName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("SentByAdmin")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("Text")
                         .IsRequired()

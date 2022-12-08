@@ -16,7 +16,8 @@ public class MessagesService
         _messagePublisher = messagePublisher;
     }
 
-    public async Task<IEnumerable<Message>> GetLast(int count = 20) => await _messagesRepository.GetLast(count);
+    public async Task<IEnumerable<Message>> GetLastForUser(string username, int count = 20) =>
+        await _messagesRepository.GetLastForUser(username, count);
 
     public Task<Message> AddMessage(Message message)
     {
